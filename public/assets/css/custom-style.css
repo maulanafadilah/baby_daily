@@ -1,0 +1,23 @@
+.bg-transparent {
+    background: transparent !important;
+    border: 0;
+  }
+.card-information {
+    width: 182px;
+    height: 82px;
+    display: inline;
+}
+.card-promotion {
+    height: fit-content;
+    width: min-content;
+}
+
+.w-110{
+    height: 54px;
+    
+}
+
+.single-banner{
+    height: 124px;
+}
+

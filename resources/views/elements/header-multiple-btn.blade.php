@@ -6,11 +6,11 @@
                 </div>
                 <div class="pageTitle">{{ $page_title }}</div>
                 <div class="right">
-                    <a href="@yield('hl_btn1', $hl_btn1 ?? '#')" class="headerButton">
-                        <ion-icon name="@yield('h_btn1', $h_btn1 ?? '')"></ion-icon>
+                    <a href="@yield('link1', $link1 ?? '#')" class="headerButton">
+                        <ion-icon name="@yield('icon1', $icon1 ?? '')"></ion-icon>
                     </a>
-                    <a href="@yield('hl_btn2', $hl_btn2 ?? '#')" class="headerButton">
-                        <ion-icon name="@yield('h_btn2', $h_btn2 ?? '')"></ion-icon>
+                    <a href="@yield('link2', $link2 ?? '#')" class="headerButton">
+                        <ion-icon name="@yield('icon2', $icon2 ?? '')"></ion-icon>
                     </a>
                 </div>
             </div>
