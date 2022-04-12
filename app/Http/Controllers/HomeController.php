@@ -14,12 +14,12 @@ class HomeController extends Controller
 		$action = __FUNCTION__;
 
         // Component
-        $header = 'default';
-        $search = true;
+        $header = 'index';
+        $search = false;
         $extraHeader = false;
         $footer = true;
-        $bottom = true;
-        $sidebar = true;
+        $bottom = 'default';
+        $sidebar = false;
 
         return view('index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
@@ -36,7 +36,7 @@ class HomeController extends Controller
         $search = false;
         $extraHeader = false;
         $footer = false;
-        $bottom = false;
+        $bottom = 'cart';
         $sidebar = false;
 
         // Icon & Link

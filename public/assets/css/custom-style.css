@@ -20,4 +20,9 @@
 .single-banner{
     height: 124px;
 }
+  
+  /* The "show" class is added to the filtered elements */
+  .show {
+    display: block;
+  }
 

@@ -5,7 +5,7 @@
 @section('content')
 
         <div class="section full mt-2 mb-3">
-            <div class="carousel-single splide ">
+            <div class="carousel-single splide">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <li class="splide__slide">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="section full mt-2">
+        <div class="section full mt-1">
             <div class="section-title">Informasi</div>
             <div class="wide-block bg-transparent">
                 <div class="row mt-1">
@@ -292,7 +292,7 @@
 
         <div class="section full mt-3">
             <div class="section-title">Brand Pilihan</div>
-            <div class="carousel-small splide mt-1">
+            <div class="carousel-small splide mt-1"  style="margin-left: -78px !important; padding-right: -12px !important;">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <li class="splide__slide">
@@ -444,30 +444,30 @@
         </div>
 
         <div class="section full mt-3 mb-3">
-            <div class="carousel-multiple splide mt-1">
+            <div class="carousel-multiple splide mt-1" id="myBtnContainer">
                 <div class="splide__track" >
                     <ul class="splide__list" >
-                        <li class="splide__slide " >
+                        <li class="splide__slide pt-2" >
                             <div class="card" style="box-shadow: none; background: transparent;">
-                                <button type="button" class="btn btn-outline-primary me-1 mb-1">PRIMARY</button>
+                                <button type="button" class="btn btn-outline-primary me-1 mb-1 active" onclick="filterSelection('Makanan')">Makanan</button>
                             </div>
                         </li>
-                        <li class="splide__slide">
+                        <li class="splide__slide pt-2">
                             <div class="card" style="box-shadow: none; background: transparent;">
-                                <button type="button" class="btn btn-outline-info me-1 mb-1">INFO</button>
+                                <button type="button" class="btn btn-outline-info me-1 mb-1" onclick="filterSelection('Susu-Formula')">Susu Formula</button>
                             </div>
                         </li>
-                        <li class="splide__slide">
+                        <li class="splide__slide pt-2">
                             <div class="card" style="box-shadow: none; background: transparent;">
-                                <button type="button" class="btn btn-outline-danger me-1 mb-1">DANGER</button>
+                                <button type="button" class="btn btn-outline-danger me-1 mb-1" onclick="filterSelection('Popok-Bayi')">Popok Bayi</button>
                             </div>
                         </li>
-                        <li class="splide__slide">
+                        <li class="splide__slide pt-2">
                             <div class="card" style="box-shadow: none; background: transparent;">
                             <button type="button" class="btn btn-outline-success me-1 mb-1">SUCCESS</button>
                             </div>
                         </li>
-                        <li class="splide__slide">
+                        <li class="splide__slide pt-2">
                             <div class="card" style="box-shadow: none; background: transparent;">
                             <button type="button" class="btn btn-outline-warning me-1 mb-1">WARNING</button>
                             </div>
@@ -480,7 +480,7 @@
         <div class="section mt-2 mb-3">
             <div class="row mt-2">
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Susu-Formula">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product1.jpg" class="image" alt="product image">
                             <h2 class="title">Apple</h2>
@@ -491,7 +491,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Popok-Bayi">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product4.jpg" class="image" alt="product image">
                             <h2 class="title">Beetroot</h2>
@@ -504,7 +504,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Makanan">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product1.jpg" class="image" alt="product image">
                             <h2 class="title">Apple</h2>
@@ -515,7 +515,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Makanan">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product4.jpg" class="image" alt="product image">
                             <h2 class="title">Beetroot</h2>
@@ -528,7 +528,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Popok-Bayi">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product1.jpg" class="image" alt="product image">
                             <h2 class="title">Apple</h2>
@@ -539,7 +539,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Susu-Formula">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product4.jpg" class="image" alt="product image">
                             <h2 class="title">Beetroot</h2>
@@ -552,7 +552,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Susu-Formula">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product1.jpg" class="image" alt="product image">
                             <h2 class="title">Apple</h2>
@@ -563,7 +563,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Popok-Bayi">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product4.jpg" class="image" alt="product image">
                             <h2 class="title">Beetroot</h2>
@@ -576,7 +576,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Makanan">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product1.jpg" class="image" alt="product image">
                             <h2 class="title">Apple</h2>
@@ -587,7 +587,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="card product-card">
+                    <div class="card product-card filterDiv Makanan">
                         <div class="card-body">
                             <img src="assets/img/sample/photo/product4.jpg" class="image" alt="product image">
                             <h2 class="title">Beetroot</h2>

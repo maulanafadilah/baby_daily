@@ -5337,8 +5337,8 @@ textarea,
 
 .carousel-single .splide__slide,
 .carousel-small .splide__slide {
-  margin-left: -1px !important;
-  padding-right: 4px !important;
+  margin-left: -16px !important;
+  padding-right: 16px !important
 }
 
 .carousel-multiple .splide__slide {
