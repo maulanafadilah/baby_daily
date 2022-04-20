@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/keranjang', 'App\Http\Controllers\HomeController@keranjang');
+Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
+Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
+Route::get('/wishlist', 'App\Http\Controllers\HomeController@wishlist');

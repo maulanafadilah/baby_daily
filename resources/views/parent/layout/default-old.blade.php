@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#s000000">
-    <title>Posyandu Digital | @yield('title', $page_title ?? '')</title>
+    <title>Baby Daily | @yield('title', $page_title ?? '')</title>
     <meta name="description" content="@yield('page_description', $page_description ?? '')">
     <!-- <meta name="keywords" content="bootstrap 5, mobile template, cordova, phonegap, mobile, html" /> -->
     <link rel="icon" type="image/png" href="{{ URL::asset('assets/img/favicon.png') }}" sizes="32x32">
@@ -17,6 +17,7 @@
     <link rel="manifest" href="__manifest.json">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="assets/css/custom-style.css">
+    
 </head>
 
 <body>
@@ -26,28 +27,28 @@
         <div class="spinner-border text-primary" role="status"></div>
     </div>
     <!-- * loader -->
-    @if($header == 'default')
-        @include('elements.header-default')
-    @elseif($header == 'multiple')
-        @include('elements.header-multiple-btn')
-    @elseif($header == 'form')
-        @include('elements.header-form')
-    @elseif($header == 'index')
-        @include('elements.header-index')
-    @endif
+
     <!-- App Header -->
-    
+    @if($header == 'default')
+        @include('parent.elements.header-default')
+    @elseif($header == 'multiple')
+        @include('parent.elements.header-multiple-btn')
+    @elseif($header == 'form')
+        @include('parent.elements.header-form')
+    @elseif($header == 'index-auth')
+        @include('parent.elements.header-index-auth')
+    @endif
     <!-- * App Header -->
 
     <!-- Search Component -->
     @if($search == true)
-        @include('elements.search')
+        @include('parent.elements.search')
     @endif
     <!-- * Search Component -->
 
     <!-- Extra Header -->
     @if($extraHeader == true)
-        @include('elements.extraHeader')
+        @include('parent.elements.extraHeader')
     @endif
     <!-- * Extra Header -->
 
@@ -58,7 +59,7 @@
 
         <!-- app footer -->
         @if($footer == true)
-    	    @include('elements.footer')
+    	    @include('parent.elements.footer')
 	    @endif
         <!-- * app footer -->
 
@@ -68,21 +69,21 @@
 
     <!-- App Bottom Menu -->
     @if($bottom == 'default')
-        @include('elements.bottomMenu-default')
+        @include('parent.elements.bottomMenu-default')
     @elseif($bottom == 'cart')
-        @include('elements.bottomCart')
+        @include('parent.elements.bottomCart')
     @endif
     <!-- * App Bottom Menu -->
 
     <!-- App Sidebar -->
     @if($sidebar == true)
-        @include('elements.sidebar')
+        @include('parent.elements.sidebar')
     @endif
     <!-- * App Sidebar -->
 
     <!-- welcome notification  -->
 
-    <!-- @include('elements.welcome') -->
+    <!-- @include('parent.elements.welcome') -->
 
     <!-- * welcome notification -->
 
