@@ -43,7 +43,7 @@
     <!-- * Search Component -->
 
     <!-- Extra Header -->
-    @if($extraHeader == true)
+    @if($extraHeader == 'default')
         @include('parent.elements.extraHeader')
     @endif
     <!-- * Extra Header -->

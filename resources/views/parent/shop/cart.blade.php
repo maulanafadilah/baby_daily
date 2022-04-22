@@ -84,7 +84,7 @@
         </div>
 
         <div class="section full mt-3 mb-3">
-            <div class="section-title mb-1">Kejar Diskon Hari Ini!</div>
+            <div class="section-title mb-1">Kejar Diskon Hari Ini! <span><a href="#">Lihat Semua</a></span></div>
             <!-- carousel multiple -->
             <div class="carousel-multiple splide">
                 <div class="splide__track">

@@ -5,7 +5,7 @@
 {{-- Content --}}
 @section('content')
 
-@include('parent.shop.elements.wishlist-header')
+@include('parent.shop.elements.header-back')
 <div class="section">
             <div class="section-title mt-1 mb-1">Semua (6)</div>
                 <!-- item -->
