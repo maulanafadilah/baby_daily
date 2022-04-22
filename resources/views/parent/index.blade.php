@@ -1,5 +1,5 @@
 {{-- Extends layout --}}
-@extends('layout.default')
+@extends('parent.layout.default')
 
 {{-- Content --}}
 @section('content')
@@ -23,38 +23,32 @@
         </div>
 
         <div class="section full mt-3">
-            <div class="section-title">Menu</div>
+            <div class="section-title">Kategori</div>
             <div class="wide-block pt-1 pb-1 bg-transparent">
                 <div class="row">
                     <div class="col d-block text-center">
                         <button type="button" class="btn btn-icon btn-primary">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </button>
-                        <h4 class="mt-1">Lorem</h4>
+                        <h4 class="mt-1">Makanan</h4>
                     </div>
                     <div class="col d-block text-center">
                         <button type="button" class="btn btn-icon btn-primary">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </button>
-                        <h4 class="mt-1">Lorem</h4>
+                        <h4 class="mt-1">Pakaian</h4>
                     </div>
                     <div class="col d-block text-center">
                         <button type="button" class="btn btn-icon btn-primary">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </button>
-                        <h4 class="mt-1">Lorem</h4>
+                        <h4 class="mt-1">Popok Bayi</h4>
                     </div>
                     <div class="col d-block text-center">
                         <button type="button" class="btn btn-icon btn-primary">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </button>
-                        <h4 class="mt-1">Lorem</h4>
-                    </div>
-                    <div class="col d-block text-center">
-                        <button type="button" class="btn btn-icon btn-primary">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                        </button>
-                        <h4 class="mt-1">Lorem</h4>
+                        <h4 class="mt-1">Susu Formula</h4>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -62,7 +56,7 @@
                         <button type="button" class="btn btn-icon btn-primary">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </button>
-                        <h4 class="mt-1">Lorem</h4>
+                        <h4 class="mt-1">Sabun Bayi</h4>
                     </div>
                     <div class="col d-block text-center">
                         <button type="button" class="btn btn-icon btn-primary">
@@ -77,20 +71,195 @@
                         <h4 class="mt-1">Lorem</h4>
                     </div>
                     <div class="col d-block text-center">
-                        <button type="button" class="btn btn-icon btn-primary">
+                        <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#ModalListview">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </button>
-                        <h4 class="mt-1">Lorem</h4>
-                    </div>
-                    <div class="col d-block text-center">
-                        <button type="button" class="btn btn-icon btn-primary">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                        </button>
-                        <h4 class="mt-1">Lorem</h4>
+                        <h4 class="mt-1">Semua Kategori</h4>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal Listview -->
+        <div class="modal fade modalbox" id="ModalListview" data-bs-backdrop="static" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Semua Kategori</h5>
+                        <a href="#" data-bs-dismiss="modal">Close</a>
+                    </div>
+                    <div class="modal-body p-0">
+
+                        <ul class="listview image-listview flush mb-2">
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Frank Boehm</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar2.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Sophie Asveld</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar3.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Rickie Baroch</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Carmelita Marsham</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar5.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Isaac Hunt</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar6.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Gabriel Moreira</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar7.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Nicolina Lindholm</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar8.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Emmalynn Mazzia</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar9.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Regina Pollastro</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar10.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Tania Pearson</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Frank Boehm</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar2.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Sophie Asveld</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar3.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Rickie Baroch</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Carmelita Marsham</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar5.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Isaac Hunt</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar6.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Gabriel Moreira</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar7.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Nicolina Lindholm</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar8.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Emmalynn Mazzia</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar9.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Regina Pollastro</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <img src="assets/img/sample/avatar/avatar10.jpg" alt="image" class="image">
+                                    <div class="in">
+                                        <div>Tania Pearson</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Modal Listview -->
+
 
         <div class="section full mt-1">
             <div class="section-title">Informasi</div>
@@ -130,7 +299,7 @@
                                         <h2 class="title">Spinach</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 5.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -141,7 +310,7 @@
                                         <h2 class="title">Hot Chili Pepper</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 14.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -152,7 +321,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -163,7 +332,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -174,7 +343,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -185,7 +354,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -208,7 +377,7 @@
                                         <h2 class="title">Spinach</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 5.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -219,7 +388,7 @@
                                         <h2 class="title">Spinach</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 5.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -230,7 +399,7 @@
                                         <h2 class="title">Hot Chili Pepper</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 14.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -241,7 +410,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -252,7 +421,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -263,7 +432,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -274,7 +443,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -378,7 +547,7 @@
                                         <h2 class="title">Spinach</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 5.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -389,7 +558,7 @@
                                         <h2 class="title">Hot Chili Pepper</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 14.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -400,7 +569,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -411,7 +580,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -422,7 +591,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -433,7 +602,7 @@
                                         <h2 class="title">Beetroot</h2>
                                         <p class="text">1 pack</p>
                                         <div class="price">$ 2.99</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
                             </li>
@@ -486,7 +655,7 @@
                             <h2 class="title">Apple</h2>
                             <p class="text">1 kg</p>
                             <div class="price">$ 1.50</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -497,7 +666,7 @@
                             <h2 class="title">Beetroot</h2>
                             <p class="text">1 piece</p>
                             <div class="price">$ 4.99</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -510,7 +679,7 @@
                             <h2 class="title">Apple</h2>
                             <p class="text">1 kg</p>
                             <div class="price">$ 1.50</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -521,7 +690,7 @@
                             <h2 class="title">Beetroot</h2>
                             <p class="text">1 piece</p>
                             <div class="price">$ 4.99</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -534,7 +703,7 @@
                             <h2 class="title">Apple</h2>
                             <p class="text">1 kg</p>
                             <div class="price">$ 1.50</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -545,7 +714,7 @@
                             <h2 class="title">Beetroot</h2>
                             <p class="text">1 piece</p>
                             <div class="price">$ 4.99</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -558,7 +727,7 @@
                             <h2 class="title">Apple</h2>
                             <p class="text">1 kg</p>
                             <div class="price">$ 1.50</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -569,7 +738,7 @@
                             <h2 class="title">Beetroot</h2>
                             <p class="text">1 piece</p>
                             <div class="price">$ 4.99</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -582,7 +751,7 @@
                             <h2 class="title">Apple</h2>
                             <p class="text">1 kg</p>
                             <div class="price">$ 1.50</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>
@@ -593,7 +762,7 @@
                             <h2 class="title">Beetroot</h2>
                             <p class="text">1 piece</p>
                             <div class="price">$ 4.99</div>
-                            <a href="#" class="btn btn-sm btn-primary btn-block">ADD TO CART</a>
+                            <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>
                 </div>

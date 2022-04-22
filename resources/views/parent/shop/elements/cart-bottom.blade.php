@@ -7,7 +7,7 @@
         <div class="item">
             
             <div class="col-4">
-                <a href="/"><ion-icon name="chevron-up-outline"></ion-icon></a>
+                <a data-bs-toggle="offcanvas" href="#offcanvas-bottom"><ion-icon name="chevron-up-outline"></ion-icon></a>
             </div>
             
             <div class="col me-3" style="text-align: start;">
@@ -17,8 +17,7 @@
         </div>
         <div class="item">
             <div class="col me-1">
-                <a href="#" class="btn btn-primary btn-block ">Order Now</a>
+                <a href="#" class="btn btn-primary btn-block ">Beli</a>
             </div>
         </div>
-        
 </div>

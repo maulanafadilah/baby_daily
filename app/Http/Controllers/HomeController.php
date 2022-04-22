@@ -10,18 +10,18 @@ class HomeController extends Controller
     {
         // Global
         $page_title = 'Beranda';
-        $page_description = "Beranda KMS Digital";
+        $page_description = "Beranda Baby Daily";
         $action = __FUNCTION__;
 
         // Component
-        $header = 'index';
+        $header = 'auth';
         $search = false;
         $extraHeader = false;
         $footer = true;
-        $bottom = 'admin';
+        $bottom = true;
         $sidebar = true;
 
-        return view('index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
 
     public function keranjang()
@@ -36,15 +36,79 @@ class HomeController extends Controller
         $search = false;
         $extraHeader = false;
         $footer = false;
-        $bottom = 'cart';
+        $bottom = false;
         $sidebar = false;
 
-        // Icon & Link
-        $icon1 = '';
-        $icon2 = 'trash-outline';
-        $link1 = '';
-        $link2 = '';
+        return view('parent/shop/cart', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+    }
 
-        return view('shop/cart', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'icon1', 'icon2', 'link1', 'link2'));
+    public function kms()
+    {
+        // Global
+        $page_title = 'KMS Digital';
+        $page_description = "Beranda KMS Digital";
+        $action = __FUNCTION__;
+
+        // Component
+        $header = false;
+        $search = true;
+        $extraHeader = false;
+        $footer = false;
+        $bottom = true;
+        $sidebar = true;
+
+        return view('parent/kms/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+    }
+
+    public function kms_show()
+    {
+        // Global
+        $page_title = 'Detail KMS';
+        $page_description = "Detail Informasi KMS Anak";
+        $action = __FUNCTION__;
+
+        // Component
+        $header = false;
+        $search = true;
+        $extraHeader = false;
+        $footer = false;
+        $bottom = false;
+        $sidebar = false;
+
+        return view('parent/kms/show', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+    }
+
+    public function wishlist()
+    {
+
+        // Global
+        $page_title = 'Wishlist';
+        $page_description = "List Produk Favorit";
+        $action = __FUNCTION__;
+
+        // Component
+        $header = false;
+        $search = true;
+        $extraHeader = false;
+        $footer = false;
+        $bottom = false;
+        $sidebar = false;
+
+
+
+        return view(
+            'parent/shop/wishlist',
+            compact(
+                'page_title',
+                'page_description',
+                'action',
+                'header',
+                'search',
+                'extraHeader',
+                'footer',
+                'bottom',
+                'sidebar',
+            )
+        );
     }
 }
