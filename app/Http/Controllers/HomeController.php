@@ -11,15 +11,15 @@ class HomeController extends Controller
         // Global
         $page_title = 'Beranda';
         $page_description = "Beranda KMS Digital";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = 'index';
         $search = false;
         $extraHeader = false;
         $footer = true;
-        $bottom = 'default';
-        $sidebar = false;
+        $bottom = 'admin';
+        $sidebar = true;
 
         return view('index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
@@ -29,7 +29,7 @@ class HomeController extends Controller
         // Global
         $page_title = 'Keranjang';
         $page_description = "Keranjang Belanja";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = false;

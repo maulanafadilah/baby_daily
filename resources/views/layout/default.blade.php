@@ -3,8 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#s000000">
@@ -27,27 +26,27 @@
     </div>
     <!-- * loader -->
     @if($header == 'default')
-        @include('elements.header-default')
+    @include('elements.header-default')
     @elseif($header == 'multiple')
-        @include('elements.header-multiple-btn')
+    @include('elements.header-multiple-btn')
     @elseif($header == 'form')
-        @include('elements.header-form')
+    @include('elements.header-form')
     @elseif($header == 'index')
-        @include('elements.header-index')
+    @include('elements.header-index')
     @endif
     <!-- App Header -->
-    
+
     <!-- * App Header -->
 
     <!-- Search Component -->
     @if($search == true)
-        @include('elements.search')
+    @include('elements.search')
     @endif
     <!-- * Search Component -->
 
     <!-- Extra Header -->
     @if($extraHeader == true)
-        @include('elements.extraHeader')
+    @include('elements.extraHeader')
     @endif
     <!-- * Extra Header -->
 
@@ -58,8 +57,8 @@
 
         <!-- app footer -->
         @if($footer == true)
-    	    @include('elements.footer')
-	    @endif
+        @include('elements.footer')
+        @endif
         <!-- * app footer -->
 
     </div>
@@ -68,15 +67,17 @@
 
     <!-- App Bottom Menu -->
     @if($bottom == 'default')
-        @include('elements.bottomMenu-default')
+    @include('elements.bottomMenu-default')
     @elseif($bottom == 'cart')
-        @include('elements.bottomCart')
+    @include('elements.bottomCart')
+    @elseif($bottom == 'admin')
+    @include('elements.bottomMenu-admin')
     @endif
     <!-- * App Bottom Menu -->
 
     <!-- App Sidebar -->
     @if($sidebar == true)
-        @include('elements.sidebar')
+    @include('elements.sidebar')
     @endif
     <!-- * App Sidebar -->
 
@@ -107,69 +108,72 @@
 
     @if($extraHeader == true)
     <script>
-    function myFunction() {
-        var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("myUL");
-        li = ul.getElementsByTagName("li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
             }
         }
-    }
     </script>
     @endif
-    
+
     @if($header == 'index')
     <script>
-    filterSelection("all")
-    function filterSelection(c) {
-    var x, i;
-    x = document.getElementsByClassName("filterDiv");
-    if (c == "all") c = "";
-    for (i = 0; i < x.length; i++) {
-        w3RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-    }
-    }
+        filterSelection("all")
 
-    function w3AddClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-    }
-    }
-
-    function w3RemoveClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
         }
-    }
-    element.className = arr1.join(" ");
-    }
 
-    // Add active class to the current button (highlight it)
-    var btnContainer = document.getElementById("myBtnContainer");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-    });
-    }
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {
+                    element.className += " " + arr2[i];
+                }
+            }
+        }
+
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
     </script>
     @endif
 
