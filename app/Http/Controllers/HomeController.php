@@ -11,7 +11,7 @@ class HomeController extends Controller
         // Global
         $page_title = 'Beranda';
         $page_description = "Beranda Baby Daily";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = 'auth';
@@ -29,7 +29,7 @@ class HomeController extends Controller
         // Global
         $page_title = 'Keranjang';
         $page_description = "Keranjang Belanja";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = false;
@@ -47,7 +47,7 @@ class HomeController extends Controller
         // Global
         $page_title = 'KMS Digital';
         $page_description = "Beranda KMS Digital";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = false;
@@ -65,7 +65,7 @@ class HomeController extends Controller
         // Global
         $page_title = 'Detail KMS';
         $page_description = "Detail Informasi KMS Anak";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = false;
@@ -84,7 +84,7 @@ class HomeController extends Controller
         // Global
         $page_title = 'Wishlist';
         $page_description = "List Produk Favorit";
-		$action = __FUNCTION__;
+        $action = __FUNCTION__;
 
         // Component
         $header = false;
@@ -94,20 +94,22 @@ class HomeController extends Controller
         $bottom = false;
         $sidebar = false;
 
-        
 
-        return view('parent/shop/wishlist', 
-                    compact(
-                            'page_title',
-                            'page_description', 
-                            'action', 
-                            'header', 
-                            'search', 
-                            'extraHeader', 
-                            'footer', 
-                            'bottom', 
-                            'sidebar',
-                        ));
+
+        return view(
+            'parent/shop/wishlist',
+            compact(
+                'page_title',
+                'page_description',
+                'action',
+                'header',
+                'search',
+                'extraHeader',
+                'footer',
+                'bottom',
+                'sidebar',
+            )
+        );
     }
 
     public function discovery()

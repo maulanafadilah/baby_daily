@@ -7,13 +7,13 @@
                 </a>
                 <a href="{{ url('/keranjang') }}" class="item {{ (request()->is('keranjang*')) ? 'active' : '' }}">
                     <div class="col">
-                    <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="cart-outline"></ion-icon>
                         <strong>Keranjang</strong>
                     </div>
                 </a>
                 <a href="{{ url('/kms') }}" class="item {{ (request()->is('kms*')) ? 'active' : '' }}">
                     <div class="col">
-                    <ion-icon name="albums-outline"></ion-icon>
+                        <ion-icon name="albums-outline"></ion-icon>
                         <strong>KMS</strong>
                     </div>
                 </a>
