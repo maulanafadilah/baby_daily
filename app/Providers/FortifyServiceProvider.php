@@ -46,16 +46,16 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
-        Fortify::loginView(function () {
-            return view('mbb.login');
-        });
+        // Fortify::loginView(function () {
+        //     return view('mbb.login');
+        // });
 
-        Fortify::registerView(function () {
-            return view('mbb.register');
-        });
+        // Fortify::registerView(function () {
+        //     return view('mbb.register');
+        // });
 
-        Fortify::requestPasswordResetLinkView(function () {
-            return view('mbb.forgot-password');
-        });
+        // Fortify::requestPasswordResetLinkView(function () {
+        //     return view('mbb.forgot-password');
+        // });
     }
 }

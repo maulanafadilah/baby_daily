@@ -16,7 +16,7 @@
         @endif
     </div>
     <div class="section mt-1 mb-5">
-        <form action="{{ route('auth') }}" method="POST">
+        <form action="{{ __('login')}}" method="POST">
             @csrf
             <div class="form-group boxed">
                 <div class="input-wrapper">

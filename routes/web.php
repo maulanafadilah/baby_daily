@@ -18,9 +18,9 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/keranjang', 'App\Http\Controllers\HomeController@keranjang');
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('login', 'index')->name('login')->middleware('guest');
+    // Route::get('login', 'index')->name('login')->middleware('guest');
     Route::post('auth', 'login')->name('auth');
-    Route::get('logout', 'logout')->name('logout');
+    // Route::get('logout', 'logout')->name('logout');
 });
 
 // Route::middleware(['auth', 'level:admin,kader,pemda,orangtua'])->group(function () {
