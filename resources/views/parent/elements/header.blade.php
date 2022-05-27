@@ -10,15 +10,9 @@
             </form>
         </div>
         <div class="right">
-            @auth
-            <a href="/logout" class="headerButton text-primary">
-                <ion-icon name="person-outline" class="pe-1"></ion-icon>
-            </a>
-            @else
             <a href="/login" class="headerButton text-primary">
                 <ion-icon name="log-in-outline" class="pe-1"></ion-icon>
                 <span class="pe-1">Masuk</span>
             </a>
-            @endauth
         </div>
     </div>

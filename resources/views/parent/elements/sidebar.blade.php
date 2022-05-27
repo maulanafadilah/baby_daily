@@ -54,7 +54,7 @@
 
                     <ul class="listview flush transparent no-line image-listview mt-2">
                         <li>
-                            <a href="index.html" class="item">
+                            <a href="/edit_profile" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="at-outline"></ion-icon>
                                 </div>
@@ -149,12 +149,14 @@
             <a href="#" class="button">
                 <ion-icon name="settings-outline"></ion-icon>
             </a> -->
-                    <a href="#" class="button">
-                        <ion-icon name="log-out-outline" class="text-danger"></ion-icon>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-block">
+                            <ion-icon name="log-out-outline" class="text-danger"></ion-icon>
 
-                        <h4 class="pt-1 ps-1 text-danger">Keluar</h4>
-
-                    </a>
+                            <h4 class="pt-1 ps-1 text-danger">Keluar</h4>
+                        </button>
+                    </form>
                 </div>
                 <!-- * sidebar buttons -->
             </div>

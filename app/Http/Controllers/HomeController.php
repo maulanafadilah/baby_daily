@@ -14,12 +14,12 @@ class HomeController extends Controller
         $action = __FUNCTION__;
 
         // Component
-        $header = 'auth';
+        $header = 'default';
         $search = false;
         $extraHeader = false;
         $footer = true;
         $bottom = true;
-        $sidebar = true;
+        $sidebar = false;
 
         return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
@@ -110,5 +110,24 @@ class HomeController extends Controller
                 'sidebar',
             )
         );
+    }
+
+    public function user()
+    {
+
+        // Global
+        $page_title = 'Beranda';
+        $page_description = "Beranda Baby Daily";
+        $action = __FUNCTION__;
+
+        // Component
+        $header = 'auth';
+        $search = false;
+        $extraHeader = false;
+        $footer = true;
+        $bottom = true;
+        $sidebar = true;
+
+        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
 }

@@ -50,9 +50,9 @@ class FortifyServiceProvider extends ServiceProvider
         //     return view('mbb.login');
         // });
 
-        // Fortify::registerView(function () {
-        //     return view('mbb.register');
-        // });
+        Fortify::registerView(function () {
+            return view('mbb.register');
+        });
 
         // Fortify::requestPasswordResetLinkView(function () {
         //     return view('mbb.forgot-password');

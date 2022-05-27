@@ -23,6 +23,8 @@ class User extends Authenticatable
         'nomor_telepon',
         'id_peranan',
         'password',
+        'pertanyaan',
+        'jawaban'
     ];
 
     /**

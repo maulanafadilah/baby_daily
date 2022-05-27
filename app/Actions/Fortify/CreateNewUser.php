@@ -22,29 +22,38 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'nama_lengkap' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique(User::class),
-            ],
+            // 'email' => [
+            //     'string',
+            //     'email',
+            //     'max:255',
+            //     Rule::unique(User::class),
+            // ],
             'nomor_telepon' => [
                 'required',
                 'string',
                 'max:13',
+                'min:10',
                 Rule::unique(User::class),
             ],
             'id_peranan' => ['required', 'numeric', 'max:11'],
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
-            'nama_lengkap' => $input['name'],
-            'email' => $input['email'],
-            'nomor_telepon' => $input['number'],
-            'id_peranan' => $input['id'],
-            'password' => Hash::make($input['password']),
-        ]);
+        if ($input['id_peranan'] == 5 || $input['id_peranan'] == 4) {
+            return User::create([
+                'nama_lengkap' => $input['nama_lengkap'],
+                'nomor_telepon' => $input['nomor_telepon'],
+                'id_peranan' => $input['id_peranan'],
+                'password' => Hash::make($input['password'])
+            ]);
+        } else {
+            return User::create([
+                'nama_lengkap' => $input['nama_lengkap'],
+                'email' => $input['email'],
+                'nomor_telepon' => $input['nomor_telepon'],
+                'id_peranan' => 4,
+                'password' => Hash::make($input['password'])
+            ]);
+        }
     }
 }
