@@ -1,26 +1,20 @@
             <div class="appBottomMenu">
-                <a href="{{ url('/') }}" class="item {{ (request()->is('/')) ? 'active' : '' }}">
+            <a href="{{ url('/mitra') }}" class="item {{ (request()->is('mitra*')) ? 'active' : '' }}">
                     <div class="col">
-                        <ion-icon name="home-outline"></ion-icon>
+                        <ion-icon name="bag-check-outline"></ion-icon>
                         <strong>Beranda</strong>
                     </div>
                 </a>
-                <a href="{{ url('/mitra') }}" class="item {{ (request()->is('mitra*')) ? 'active' : '' }}">
+                <a href="{{ url('/wishlist') }}" class="item {{ (request()->is('wishlist*')) ? 'active' : '' }}">
                     <div class="col">
-                    <ion-icon name="bag-check-outline"></ion-icon>
-                        <strong>Mitra</strong>
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <strong>Favorite</strong>
                     </div>
                 </a>
-                <a href="{{ url('/kms') }}" class="item {{ (request()->is('kms*')) ? 'active' : '' }}">
+                <!-- <a href="{{ url('/account') }}" class="item {{ (request()->is('account*')) ? 'active' : '' }}">
                     <div class="col">
-                    <ion-icon name="albums-outline"></ion-icon>
-                        <strong>KMS</strong>
+                        <ion-icon name="person-outline"></ion-icon>
+                        <strong>Akun</strong>
                     </div>
-                </a>
-                <a href="{{ url('/artikel') }}" class="item {{ (request()->is('artikel*')) ? 'active' : '' }}">
-                    <div class="col">
-                        <ion-icon name="book-outline"></ion-icon>
-                        <strong>Artikel</strong>
-                    </div>
-                </a>
+                </a> -->
             </div>

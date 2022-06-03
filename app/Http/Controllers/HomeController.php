@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Categorie;
+use App\Models\Seller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,14 +18,74 @@ class HomeController extends Controller
         $action = __FUNCTION__;
 
         // Component
-        $header = 'auth';
+        if(Auth::check()){
+            $header = 'auth';
+            $sidebar = true;
+        } else{
+            $header = 'default';
+            $sidebar = false;
+        }
         $search = false;
         $extraHeader = false;
         $footer = true;
         $bottom = true;
-        $sidebar = true;
+        
+        // SQL
+        $category_old = Categorie::select('nama_kategori', 'slug')->limit(4)->oldest()->get();
+        $category_new = Categorie::select('nama_kategori', 'slug')->orderBy('id', 'DESC')->limit(3)->get();
+        $category_all = Categorie::select('nama_kategori', 'slug')->orderBy('id', 'ASC')->get();
 
-        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+        $products_all = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get();
+        $products_pop = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->limit(5)->get();
+
+        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->limit(5)->get();
+        // return $products_all;
+
+        return view('parent/index', 
+               compact('page_title', 
+                        'page_description', 
+                        'action', 
+                        'header', 
+                        'search', 
+                        'extraHeader', 
+                        'footer', 
+                        'bottom', 
+                        'sidebar',
+                        'category_old',
+                        'category_new',
+                        'category_all',
+                        'products_all',
+                        'products_pop',
+                        'seller'));
+    }
+    public function rolehandler(){
+        // Global
+        $page_title = 'Error';
+        $page_description = "Halaman Error";
+		$action = __FUNCTION__;
+
+        // Component
+        $header = false;
+        $search = false;
+        $extraHeader = false;
+        $footer = false;
+        $bottom = false;
+        $sidebar = false;
+
+        
+
+        return view('roleHandler', 
+                    compact(
+                            'page_title',
+                            'page_description', 
+                            'action', 
+                            'header', 
+                            'search', 
+                            'extraHeader', 
+                            'footer', 
+                            'bottom', 
+                            'sidebar',
+                        ));
     }
 
     public function keranjang()
@@ -76,40 +140,6 @@ class HomeController extends Controller
         $sidebar = false;
 
         return view('parent/kms/show', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
-    }
-
-    public function wishlist()
-    {
-
-        // Global
-        $page_title = 'Wishlist';
-        $page_description = "List Produk Favorit";
-        $action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = true;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = false;
-
-
-
-        return view(
-            'parent/shop/wishlist',
-            compact(
-                'page_title',
-                'page_description',
-                'action',
-                'header',
-                'search',
-                'extraHeader',
-                'footer',
-                'bottom',
-                'sidebar',
-            )
-        );
     }
 
     public function discovery()
@@ -259,102 +289,6 @@ class HomeController extends Controller
         
 
         return view('parent/shop/brand', 
-                    compact(
-                            'page_title',
-                            'page_description', 
-                            'action', 
-                            'header', 
-                            'search', 
-                            'extraHeader', 
-                            'footer', 
-                            'bottom', 
-                            'sidebar',
-                        ));
-    }
-
-    public function mitra()
-    {
-
-        // Global
-        $page_title = 'Mitra';
-        $page_description = "Mitra list";
-		$action = __FUNCTION__;
-
-        // Component
-        $header = 'auth';
-        $search = true;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = false;
-
-        
-
-        return view('parent/shop/mitra', 
-                    compact(
-                            'page_title',
-                            'page_description', 
-                            'action', 
-                            'header', 
-                            'search', 
-                            'extraHeader', 
-                            'footer', 
-                            'bottom', 
-                            'sidebar',
-                        ));
-    }
-
-    public function mitra_umkm()
-    {
-
-        // Global
-        $page_title = 'Mitra UMKM';
-        $page_description = "List UMKM";
-		$action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = true;
-        $extraHeader = true;
-        $footer = false;
-        $bottom = false;
-        $sidebar = true;
-
-        
-
-        return view('parent/shop/umkm', 
-                    compact(
-                            'page_title',
-                            'page_description', 
-                            'action', 
-                            'header', 
-                            'search', 
-                            'extraHeader', 
-                            'footer', 
-                            'bottom', 
-                            'sidebar',
-                        ));
-    }
-
-    public function store()
-    {
-
-        // Global
-        $page_title = 'Store';
-        $page_description = "Store Page";
-		$action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = true;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = true;
-
-        
-
-        return view('parent/shop/store', 
                     compact(
                             'page_title',
                             'page_description', 

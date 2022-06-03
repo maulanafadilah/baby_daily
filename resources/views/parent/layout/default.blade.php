@@ -29,9 +29,11 @@
 
     <!-- App Header -->
     @if($header == 'default')
-    @include('parent.elements.header')
+        @include('parent.elements.header')
     @elseif($header == 'auth')
-    @include('parent.elements.header-auth')
+        @include('parent.elements.header-auth')
+    @elseif($header == false)
+
     @endif
     <!-- * App Header -->
 

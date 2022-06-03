@@ -1,18 +1,22 @@
-    <div class="appHeader">
+    <div class="appHeader scrolled">
         <div class="left">
-        <a href="#" class="headerButton goBack text-primary">
+            <a href="{{ url('/') }}" class="headerButton goBack text-primary">
                 <ion-icon name="chevron-back-outline"></ion-icon>
-        </a>
+            </a>
         </div>
-        <div class="pageTitle">
-            @yield('title', $page_title ?? '')
+        <div class="pageTitle" style="opacity: 100%;">
+            <form class="search-form">
+                <div class="form-group searchbox">
+                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Cari...">
+                    <i class="input-icon">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </i>
+                </div>
+            </form>
         </div>
-        <div class="right">
-        <a href="/wishlist" class="headerButton text-primary">
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </a>
-            <a href="#" class="headerButton toggle-searchbox text-primary">
-                <ion-icon name="search-outline"></ion-icon>
+        <div class="right ">
+            <a href="{{ url('/account') }}" class="headerButton">
+                <ion-icon name="person-outline"></ion-icon>
             </a>
         </div>
     </div>
