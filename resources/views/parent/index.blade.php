@@ -46,31 +46,28 @@
 
         <!-- Kategori -->
         <div class="section full mt-3">
-            <div class="section-title">Kategori</div>
+            <!-- <div class="section-title">Kategori</div> -->
             <div class="wide-block pt-1 pb-1 bg-transparent">
                 <div class="row">
                     @foreach ($category_old as $item)
-                    <div class="col d-block text-center">
-                        <button type="button" class="btn btn-icon btn-primary" onclick="window.location.href='/category/{{ $item->slug }}'">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                        </button>
+                    <div class="col d-block text-center" onclick="window.location.href='/category/{{$item->slug}}'">
+                       
+                            <img src="img/banner/{{$item->icon}}" alt="" class="imaged w36">
+                        
                         <h4 class="mt-1">{{$item->nama_kategori}}</h4>
                     </div>
                     @endforeach
                 </div>
                 <div class="row mt-3">
                     @foreach ($category_new as $item)
-                    <div class="col d-block text-center">
-                        <button type="button" class="btn btn-icon btn-primary" onclick="window.location.href='/category/{{$item->slug}}'">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                        </button>
+                    <div class="col d-block text-center" onclick="window.location.href='/category/{{$item->slug}}'">
+                        
+                    <img src="img/banner/{{$item->icon}}" alt="" class="imaged w36">
                         <h4 class="mt-1">{{$item->nama_kategori}}</h4>
                     </div>
                     @endforeach
                     <div class="col d-block text-center">
-                        <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#ModalListview">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                        </button>
+                        <img src="img/banner/house.png" alt="" class="imaged w36" data-bs-toggle="modal" data-bs-target="#ModalListview">
                         <h4 class="mt-1">Semua Kategori</h4>
                     </div>
                 </div>
@@ -92,7 +89,7 @@
                             @foreach ($category_all as $item)
                             <li>
                                 <div class="item" onclick="window.location.href='/category/{{$item->slug}}'">
-                                    <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="image">
+                                    <img src="img/banner/{{$item->icon}}" alt="image" class="image">
                                     <div class="in">
                                         <div>{{$item->nama_kategori}}</div>
                                     </div>
@@ -288,7 +285,7 @@
                     <div class="splide__track">
                         <ul class="splide__list">
                             @foreach ($seller as $item)
-                            <li class="splide__slide" onclick="window.location.href='/store/{{$item->id_penjual}}'">
+                            <li class="splide__slide" onclick="window.location.href='/store/{{$item->id}}'">
                                 <div class="card product-card" style="height: 130px;">
                                     <div class="card-body text-center">
                                         <img src="img/profile/{{$item->foto_penjual}}" class="imaged rounded w64" alt="product image">
@@ -428,9 +425,10 @@
 
         <!-- List Produk -->
         <div class="section mt-2 mb-3">
-            <div class="row mt-2">
+            <div class="infinite-scroll">
+            <div class="row mt-2 " >
                 @foreach ($products_all as $item)
-                <div class="col-6 mt-2">
+                <div class="col-6 mt-2" id="post-data">
                     <div class="card product-card">
                         <div class="card-body">
                             <img src="img/products/{{$item->gambar}}" class="image" alt="product image" onclick="window.location.href='/product/{{$item->id}}'">
@@ -457,8 +455,32 @@
                 </div>
                 @endforeach
             </div>
+                {{$products_all->links()}}
+            </div>
             
         </div>
         <!-- *List Produk -->
+        
+        <script type="text/javascript">
+        $('ul.pagination').hide();
+        $(function() {
+            $('.infinite-scroll').jscroll({
+                autoTrigger: true,
+                loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+                padding: 0,
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.infinite-scroll',
+                callback: function() {
+                    $('ul.pagination').remove();
+                }
+            });
+        });
+        </script>
 
+        <!-- Load More -->
+        <!-- <div class="ajax-load text-center" style="display: none;">
+            <img src="{{asset('img/load.gif')}}">
+        </div> -->
+        <!-- *Load More -->
+        
 @endsection

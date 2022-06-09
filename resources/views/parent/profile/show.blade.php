@@ -6,12 +6,32 @@
 @section('content')
 
 @include('parent.profile.elements.header-back')
+        @if(session()->has('success'))
+            <div id="toast-12" class="toast-box toast-center show">
+                <div class="in">
+                    <div class="text">
+                    {{ session('success') }}
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                setTimeout(() => {
+                closeToastBox('toast-12')
+                }, 2000);
+            </script>
+        @endif
+
         <div class="section mt-3">
             <div class="avatar" style="text-align:center">
+                @if($biodata->foto_orangtua == true)
+                <img src="{{asset('storage/'.$biodata->foto_orangtua)}}" alt="avatar" class="imaged w64 rounded">
+                @else
                 <img src="assets/img/sample/avatar/avatar1.jpg" alt="avatar" class="imaged w64 rounded">
+                @endif
             </div>
                 <div class="in mt-1" style="text-align:center">
-                    <a href="#" class="text-primary">Ubah Foto Profil</a>
+                    <a href="/profile/6/edit" class="text-primary">Ubah Foto Profil</a>
                 </div>
         </div>
 

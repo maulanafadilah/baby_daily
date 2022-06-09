@@ -10,8 +10,8 @@
     <title>Baby Daily | @yield('title', $page_title ?? '')</title>
     <meta name="description" content="@yield('page_description', $page_description ?? '')">
     <!-- <meta name="keywords" content="bootstrap 5, mobile template, cordova, phonegap, mobile, html" /> -->
-    <link rel="icon" type="image/png" href="{{ URL::asset('assets/img/favicon.png') }}" sizes="32x32">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset('assets/img/icon/192x192.png') }}">
+    <link rel="icon" type="image/png" href="{{ URL::asset('assets/img/logo-babydaily.png') }}" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset('assets/img/icon/logo-babydaily.png') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
     <link rel="manifest" href="__manifest.json">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -47,7 +47,7 @@
                                 ?>
                                 
                                 @foreach($seller as $item)
-                                <div class="col text-center" onclick="window.location.href='/store/{{$item->id_penjual}}'">
+                                <div class="col text-center" onclick="window.location.href='/store/{{$item->id}}'">
                                     <img src="{{asset('img/profile/'.$item->foto_penjual)}}" alt="image" class="imaged w86">
                                     <h4 class="mt-1">{{$item->nama_toko}}</h4>
                                 </div>

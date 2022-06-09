@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="component-appheader.html" class="item">
+                <a href="/account/{{auth()->user()->id}}" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                     </div>
@@ -31,7 +31,17 @@
                 </a>
             </li>
             <li>
-                <a href="component-animated-header.html" class="item">
+                <a href="#" class="item">
+                    <div class="icon-box bg-primary">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        Pertanyaan Keamanan
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/account/4/edit" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="create-outline"></ion-icon>
                     </div>

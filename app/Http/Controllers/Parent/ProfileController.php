@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Eltern;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use function PHPUnit\Framework\returnSelf;
 
 class ProfileController extends Controller
 {
@@ -32,7 +35,13 @@ class ProfileController extends Controller
        $nomor_telepon = auth()->user()->nomor_telepon;
 
        $biodata = Eltern::where('nomor_telepon', $nomor_telepon)->get();
-    //    return $biodata;s
+       $f_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get();
+                if($f_pic == '[]'){
+                    $profile_pic = false;
+                } else{
+                    $profile_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
+                }
+    //    return $biodata;
 
         if($biodata == '[]'){
             return view('parent/profile/index', 
@@ -62,6 +71,7 @@ class ProfileController extends Controller
                            'footer', 
                            'bottom', 
                            'sidebar',
+                           'profile_pic',
                        ), ['biodata'=>$biodata]);
         }
     }
@@ -215,8 +225,23 @@ class ProfileController extends Controller
                        ), ['biodata'=>$biodata]);
         }
         elseif($id == 5){
-            $biodata = Eltern::select('jenis_kelamin', 'tanggal_lahir')->where('id_pengguna', $user)->get()[0];
+            $biodata = Eltern::select('jenis_kelamin')->where('id_pengguna', $user)->get()[0];
             return view('parent/profile/edit', 
+                   compact(
+                           'page_title',
+                           'page_description', 
+                           'action', 
+                           'header', 
+                           'search', 
+                           'extraHeader', 
+                           'footer', 
+                           'bottom', 
+                           'sidebar',
+                       ), ['biodata'=>$biodata]);
+        }
+        elseif($id == 6){
+            $biodata = Eltern::select('foto_orangtua')->where('id_pengguna', $user)->get()[0];
+            return view('parent/profile/edit-picture', 
                    compact(
                            'page_title',
                            'page_description', 
@@ -255,7 +280,7 @@ class ProfileController extends Controller
                 ]);
                 Eltern::where('id_pengguna', $id)
                     ->update($validatedData);
-                return redirect('/profile')->with('success', 'Data Diri Berhasil diupdate!');
+                return redirect('/profile')->with('success', 'Data Diri Berhasil Diupdate!');
                 break;
             case ($request->no_kk == true):
                 $validatedData = $request->validate([
@@ -263,7 +288,7 @@ class ProfileController extends Controller
                 ]);
                 Eltern::where('id_pengguna', $id)
                     ->update($validatedData);
-                return redirect('/profile')->with('success', 'Data Diri Berhasil diupdate!');
+                return redirect('/profile')->with('success', 'Data Diri Berhasil Diupdate!');
                 break;
             case ($request->tanggal_lahir == true):
                 $validatedData = $request->validate([
@@ -271,7 +296,7 @@ class ProfileController extends Controller
                 ]);
                 Eltern::where('id_pengguna', $id)
                     ->update($validatedData);
-                return redirect('/profile')->with('success', 'Data Diri Berhasil diupdate!');
+                return redirect('/profile')->with('success', 'Data Diri Berhasil Diupdate!');
                 break;
             case ($request->jenis_kelamin == true):
                 $validatedData = $request->validate([
@@ -279,8 +304,25 @@ class ProfileController extends Controller
                 ]);
                 Eltern::where('id_pengguna', $id)
                     ->update($validatedData);
-                return redirect('/profile')->with('success', 'Data Diri Berhasil diupdate!');
+                return redirect('/profile')->with('success', 'Data Diri Berhasil Diupdate!');
                 break;
+            case ($request->foto_orangtua == true):
+                    // return $request;
+                    $validatedData = $request->validate([
+                        'foto_orangtua' => 'required|image|file|max:10240',
+                    ]);
+
+                    if($request->oldImage){
+                        Storage::delete($request->oldImage);
+                        $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
+                    }else{
+                        $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
+                    }
+
+                    Eltern::where('id_pengguna', $id)
+                        ->update($validatedData);
+                    return redirect('/profile')->with('success', 'Data Diri Berhasil Diupdate!');
+                    break;
         }
         
     }

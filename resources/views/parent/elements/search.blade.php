@@ -1,7 +1,7 @@
 <div id="search" class="appHeader">
-        <form class="search-form">
+        <form class="search-form" action="/product">
             <div class="form-group searchbox">
-                <input type="text" class="form-control" placeholder="Search...">
+                <input type="text" class="form-control" name="search" placeholder="Cari...">
                 <i class="input-icon">
                     <ion-icon name="search-outline"></ion-icon>
                 </i>

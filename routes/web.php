@@ -11,6 +11,7 @@ use App\Http\Controllers\Parent\AccountController;
 use App\Http\Controllers\Parent\ProfileController;
 use App\Http\Controllers\Parent\CategoryController;
 use App\Http\Controllers\Parent\CartController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,39 +24,59 @@ use App\Http\Controllers\Parent\CartController;
 |
 */
 
-// Authentication
-// Route::get('/register', 'App\Http\Controllers\Parent\RegisterController@index')->middleware('guest');
-// Route::post('/register', 'App\Http\Controllers\Parent\RegisterController@store');
 
-// Route::get('/login', 'App\Http\Controllers\Parent\LoginController@index')->name('login')->middleware('guest');
-// Route::post('/login', 'App\Http\Controllers\Parent\LoginController@authenticate');
+/*--------------------------------BOTH LOGGED AND UNLOGGED---------------------------- */
 
-// Route::get('/logout', 'App\Http\Controllers\Parent\LoginController@logout');
-// Route::post('/logout', 'App\Http\Controllers\Parent\LoginController@logout');
+// HOME
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
-// Route::get('/rolehandler', 'App\Http\Controllers\HomeController@rolehandler');
+// MITRA
+Route::get('/mitra/ppkm', 'App\Http\Controllers\Parent\MitraController@index');
+Route::get('/mitra/ppkm/umkm', 'App\Http\Controllers\parent\MitraController@mitra_umkm');
 
-// Home
+// STORE
+Route::resource('/store', SellerController::class);
+
+// PRODUCT
+Route::resource('/product', ProductController::class);
+
+// CATEGORY
+Route::resource('/category', CategoryController::class);
+
+
+
+// Route::get('/discovery', 'App\Http\Controllers\HomeController@discovery');
+// Route::get('/promotion', 'App\Http\Controllers\HomeController@promotion');
+// Route::get('/information', 'App\Http\Controllers\HomeController@information');
+// Route::get('/brand', 'App\Http\Controllers\HomeController@brand');
+
+/*------------------------------------------------------------------------------------- */
+
+Route::domain('seller.'. env('APP_URL'))->group(function () {
+    Route::get('/', 'App\Http\Controllers\Parent\MitraController@index');
+});
+
 
 Route::controller(AuthController::class)->group(function () {
     
+    Route::post('resetpassword', 'reset_password')->name('reset_password');
+    Route::post('reset-password-log', 'reset_password_log')->name('reset_password_log');
+    
     Route::middleware('guest')->group(function () {
-        Route::get('/', 'App\Http\Controllers\HomeController@index');
+        // Auth
         Route::get('login', 'index')->name('login');
         Route::get('register', 'register')->name('register');
         Route::get('reset', 'reset')->name('reset');
-        Route::post('resetpassword', 'reset_password')->name('reset_password');
     });
 
     Route::middleware('auth')->group(function () {
-        Route::get('edit_profile', 'edit_profile')->name('edit_profile');
-        Route::put('update_profile', 'update_profile')->name('update_profile');
-        Route::put('update_pertanyaan', 'update_pertanyaan')->name('update_pertanyaan');
+        // Route::get('edit_account', 'edit_account')->name('edit_account');
+        // Route::put('update_account', 'update_account')->name('update_account');
+        Route::put('update_question', 'update_question')->name('update_question');
     });
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', 'App\Http\Controllers\HomeController@user')->name('home')->middleware('question');
 
     Route::get('/question', 'App\Http\Controllers\AuthController@question')->name('question');
 
@@ -66,20 +87,24 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('user')->group(function () {
-        // 
+        // Wishlist
+        Route::resource('/wishlist', WishlistController::class)->middleware('auth');
+
+        // Account
+        Route::resource('/account', AccountController::class)->middleware('auth');
+
+        // Profile
+        Route::resource('/profile', ProfileController::class)->middleware('auth');
+
+        // Cart
+        Route::resource('/cart', CartController::class);
+        
+        // KMS
+        // Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
+        // Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
     });
 
     Route::middleware('seller')->group(function () {
         // 
     });
 });
-
-
-
-// Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
-// Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
-// Route::get('/discovery', 'App\Http\Controllers\HomeController@discovery');
-// Route::get('/promotion', 'App\Http\Controllers\HomeController@promotion');
-// Route::get('/information', 'App\Http\Controllers\HomeController@information');
-// Route::get('/brand', 'App\Http\Controllers\HomeController@brand');
-// Route::get('/keranjang', 'App\Http\Controllers\HomeController@keranjang');

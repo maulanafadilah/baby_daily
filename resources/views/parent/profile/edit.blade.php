@@ -125,9 +125,7 @@
                     </div>
                 </form>
                 @break
-        @endswitch
-
-        
+        @endswitch   
     </div>
 
 @endsection

@@ -5,9 +5,9 @@
             </a>
         </div>
         <div class="pageTitle" style="opacity: 100%;">
-            <form class="search-form">
+            <form class="search-form" action="/product">
                 <div class="form-group searchbox">
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Cari...">
+                    <input type="text" class="form-control" id="myInput" name="search" placeholder="Cari...">
                     <i class="input-icon">
                         <ion-icon name="search-outline"></ion-icon>
                     </i>

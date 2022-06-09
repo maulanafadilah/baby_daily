@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Parent;
 
 use App\Models\User;
+use App\Models\Seller;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Models\Productimage;
@@ -19,7 +20,42 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // Global
+        $page_title = 'Beranda';
+        $page_description = "Beranda Baby Daily";
+        $action = __FUNCTION__;
+
+        // Component
+        if(Auth::check()){
+            $header = false;
+            $sidebar = false;
+        } else{
+            $header = false;
+            $sidebar = false;
+        }
+        $search = false;
+        $extraHeader = false;
+        $footer = false;
+        $bottom = false;
+
+        // SQL
+        if(request('search')){
+            $result = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->get();
+            $count = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->count();
+        }
+        
+        return view('parent/shop/search', 
+               compact('page_title', 
+                        'page_description', 
+                        'action', 
+                        'header', 
+                        'search', 
+                        'extraHeader', 
+                        'footer', 
+                        'bottom', 
+                        'sidebar',
+                    'result',
+                'count'));
     }
 
     /**

@@ -1,8 +1,8 @@
     <div class="appHeader scrolled">
         <div class="left">
-            <form class="search-form ms-1">
+            <form class="search-form ms-1" action="/product">
                 <div class="form-group searchbox">
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Cari...">
+                    <input type="text" class="form-control" id="myInput" name="search" placeholder="Cari...">
                     <i class="input-icon">
                         <ion-icon name="search-outline"></ion-icon>
                     </i>

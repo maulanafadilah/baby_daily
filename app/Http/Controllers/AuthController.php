@@ -68,19 +68,18 @@ class AuthController extends Controller
         $this->validate($request, [
             'nomor_telepon'     => 'required',
             'password'      => $this->passwordRules(),
-            'pertanyaan'     => 'required|string',
+            'pertanyaan'     => 'required|numeric',
             'jawaban'     => 'required|string',
         ]);
 
+        // return $request;
         // cek akun
         $users = User::where('nomor_telepon', $request->nomor_telepon)
-            ->where('pertanyaan', $request->pertanyaan)->where('jawaban', $request->jawaban)->count();
+            ->where('pertanyaan', $request->pertanyaan)->first();
 
-        if ($users == 1) {
+        if ($users && Hash::check($request->jawaban, $users->jawaban)) {
             $password = Hash::make($request->password);
             User::where('nomor_telepon', $request->nomor_telepon)
-                ->where('pertanyaan', $request->pertanyaan)
-                ->where('jawaban', $request->jawaban)
                 ->update(['password' => $password]);
 
             return redirect()->route('login')->with('success', 'Berhasil Mengganti Password');
@@ -89,40 +88,65 @@ class AuthController extends Controller
         }
     }
 
-    public function edit_profile()
-    {
-        // Global
-        $page_title = 'Edit Profile';
-        $page_description = "Halaman Edit Profile";
-        $action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = false;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = false;
-        return view('parent.profile.edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
-    }
-
-    public function update_profile(Request $request)
+    public function reset_password_log(Request $request)
     {
         $this->validate($request, [
             'nomor_telepon'     => 'required',
-            'nama_lengkap' => 'required|string'
+            'password'      => $this->passwordRules(),
+            'pertanyaan'     => 'required|numeric',
+            'jawaban'     => 'required|string',
         ]);
 
-        User::where('id', auth()->user()->id)
-            ->update([
-                'nama_lengkap' => $request->nama_lengkap,
-                'nomor_telepon' => $request->nomor_telepon
-            ]);
+        // return $request;
+        // cek akun
+        $users = User::where('nomor_telepon', $request->nomor_telepon)
+            ->where('pertanyaan', $request->pertanyaan)->first();
 
-        return redirect()->route('home')->with('success', 'Berhasil Mengupdate Profile');
+        if ($users && Hash::check($request->jawaban, $users->jawaban)) {
+            $password = Hash::make($request->password);
+            User::where('nomor_telepon', $request->nomor_telepon)
+                ->update(['password' => $password]);
+
+            return redirect()->route('account')->with('success', 'Berhasil Mengganti Password');
+        } else {
+            return back()->with('failed', 'Akun tidak ditemukan');
+        }
     }
 
-    public function update_pertanyaan(Request $request)
+    // public function edit_account()
+    // {
+    //     // Global
+    //     $page_title = 'Edit Akun';
+    //     $page_description = "Halaman Edit Akun";
+    //     $action = __FUNCTION__;
+
+    //     // Component
+    //     $header = false;
+    //     $search = false;
+    //     $extraHeader = false;
+    //     $footer = false;
+    //     $bottom = false;
+    //     $sidebar = false;
+    //     return view('parent.account.edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+    // }
+
+    // public function update_account(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'nomor_telepon'     => 'required|unique:users',
+    //         'nama_lengkap' => 'required|string'
+    //     ]);
+
+    //     User::where('id', auth()->user()->id)
+    //         ->update([
+    //             'nama_lengkap' => $request->nama_lengkap,
+    //             'nomor_telepon' => $request->nomor_telepon
+    //         ]);
+
+    //     return back()->with('success', 'Berhasil Mengupdate Profile');
+    // }
+
+    public function update_question(Request $request)
     {
         $this->validate($request, [
             'pertanyaan'     => 'required|numeric',

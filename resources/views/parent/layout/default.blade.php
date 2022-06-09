@@ -10,12 +10,14 @@
     <title>Baby Daily | @yield('title', $page_title ?? '')</title>
     <meta name="description" content="@yield('page_description', $page_description ?? '')">
     <!-- <meta name="keywords" content="bootstrap 5, mobile template, cordova, phonegap, mobile, html" /> -->
-    <link rel="icon" type="image/png" href="{{ URL::asset('assets/img/favicon.png') }}" sizes="32x32">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset('assets/img/icon/192x192.png') }}">
+    <link rel="icon" type="image/png" href="{{ URL::asset('assets/img/logo-babydaily.png') }}" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset('assets/img/icon/logo-babydaily.png') }}">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
     <link rel="manifest" href="__manifest.json">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="assets/css/custom-style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -93,6 +95,9 @@
     <script src="{{ URL::asset('assets/js/plugins/progressbar-js/progressbar.min.js') }}"></script>
     <!-- Base Js File -->
     <script src="{{ URL::asset('assets/js/base.js') }}"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/jquery.jscroll.min.js"></script>
 
     <script>
         // Trigger welcome notification after 5 seconds

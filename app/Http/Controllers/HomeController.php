@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eltern;
+use App\Models\Seller;
 use App\Models\Product;
 use App\Models\Categorie;
-use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Global
         $page_title = 'Beranda';
@@ -19,27 +21,41 @@ class HomeController extends Controller
 
         // Component
         if(Auth::check()){
-            $header = 'auth';
-            $sidebar = true;
+            if(!auth()->user()->pertanyaan){
+                return redirect()->route('question');
+            }else{
+                $header = 'auth';
+                $sidebar = true;
+                $nomor_telepon = auth()->user()->nomor_telepon;
+                $f_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get();
+                if($f_pic == '[]'){
+                    $profile_pic = false;
+                } else{
+                    $profile_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
+                }
+            }
         } else{
             $header = 'default';
             $sidebar = false;
+            $profile_pic = false;
         }
         $search = false;
         $extraHeader = false;
         $footer = true;
         $bottom = true;
+
         
         // SQL
-        $category_old = Categorie::select('nama_kategori', 'slug')->limit(4)->oldest()->get();
-        $category_new = Categorie::select('nama_kategori', 'slug')->orderBy('id', 'DESC')->limit(3)->get();
-        $category_all = Categorie::select('nama_kategori', 'slug')->orderBy('id', 'ASC')->get();
+        $category_old = Categorie::select('nama_kategori', 'slug', 'icon')->limit(4)->oldest()->get();
+        $category_new = Categorie::select('nama_kategori', 'slug', 'icon')->orderBy('id', 'DESC')->limit(3)->get();
+        $category_all = Categorie::select('nama_kategori', 'slug', 'icon')->orderBy('id', 'ASC')->get();
 
-        $products_all = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get();
         $products_pop = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->limit(5)->get();
-
+        
         $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->limit(5)->get();
-        // return $products_all;
+        
+        $products_all = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->paginate(8);
+        
 
         return view('parent/index', 
                compact('page_title', 
@@ -56,7 +72,8 @@ class HomeController extends Controller
                         'category_all',
                         'products_all',
                         'products_pop',
-                        'seller'));
+                        'seller',
+                        'profile_pic'));
     }
     public function rolehandler(){
         // Global
@@ -320,4 +337,5 @@ class HomeController extends Controller
 
         return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
+
 }

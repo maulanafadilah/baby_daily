@@ -3,10 +3,12 @@
 
 {{-- Content --}}
 @section('content')
+@include('parent.elements.register-header')
 
-<div class="login-form mt-1">
+<div class="login-form">
     <div class="section mt-1">
-        <h1>Posyandu Digital</h1>
+        <h1>Daftar</h1>
+        <h4>Miliki akun untuk dapat mengakses semua fitur</h4>
     </div>
     <div class="section mt-1 mb-5">
         <form action="{{ __('register')}}" method="POST">
@@ -27,7 +29,7 @@
             <div class="form-group boxed">
                 <div class="input-wrapper">
                     <label class="form-label" for="nomor_telepon1">Nomor Telepon</label>
-                    <input type="number" class="form-control" name="nomor_telepon" id="nomor_telepon1" placeholder="Nomor Telepon" value="{{ old('nomor_telepon') }}">
+                    <input type="number" class="form-control" name="nomor_telepon" id="nomor_telepon1" placeholder="Contoh: 0812345678909" value="{{ old('nomor_telepon') }}">
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -39,8 +41,8 @@
 
             <div class="form-group boxed">
                 <div class="input-wrapper">
-                    <label class="form-label" for="password1">Password</label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password1" placeholder="Password" autocomplete="off" value="{{ old('password') }}">
+                    <label class="form-label" for="password1">Kata Sandi</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password1" placeholder="Kata Sandi" autocomplete="off" value="{{ old('password') }}">
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -52,8 +54,8 @@
 
             <div class="form-group boxed">
                 <div class="input-wrapper">
-                    <label class="form-label" for="password_confirmation">Ulangi Password</label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Ulangi password" autocomplete="off" value="{{ old('password_confirmation') }}">
+                    <label class="form-label" for="password_confirmation">Ulangi Kata Sandi</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Ulangi Kata Sandi" autocomplete="off" value="{{ old('password_confirmation') }}">
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -65,8 +67,9 @@
 
             <div class="form-group boxed">
                 <div class="input-wrapper">
-                    <label class="form-label" for="peranan">Peranan</label>
+                    <label class="form-label" for="peranan">Jenis Akun</label>
                     <select class="form-select @error('id_peranan') is-invalid @enderror" aria-label="Default select example" name="id_peranan" id="peranan">
+                        <option>Pilih..</option>
                         <option value="5">Penjual / UMKM</option>
                         <option value="4">Customer / Orang Tua</option>
                     </select>
@@ -76,12 +79,8 @@
                 @endif
             </div>
 
-            <div class="form-links">
-                <div><a href="/login" class="text-muted">Sudah Punya Akun?</a></div>
-            </div>
-
             <div class="form-button-group">
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Daftar</button>
             </div>
 
         </form>
