@@ -24,51 +24,62 @@ use App\Http\Controllers\Parent\CartController;
 */
 
 // Authentication
-Route::get('/register', 'App\Http\Controllers\Parent\RegisterController@index')->middleware('guest');
-Route::post('/register', 'App\Http\Controllers\Parent\RegisterController@store');
+// Route::get('/register', 'App\Http\Controllers\Parent\RegisterController@index')->middleware('guest');
+// Route::post('/register', 'App\Http\Controllers\Parent\RegisterController@store');
 
-Route::get('/login', 'App\Http\Controllers\Parent\LoginController@index')->name('login')->middleware('guest');
-Route::post('/login', 'App\Http\Controllers\Parent\LoginController@authenticate');
+// Route::get('/login', 'App\Http\Controllers\Parent\LoginController@index')->name('login')->middleware('guest');
+// Route::post('/login', 'App\Http\Controllers\Parent\LoginController@authenticate');
 
-Route::get('/logout', 'App\Http\Controllers\Parent\LoginController@logout');
-Route::post('/logout', 'App\Http\Controllers\Parent\LoginController@logout');
+// Route::get('/logout', 'App\Http\Controllers\Parent\LoginController@logout');
+// Route::post('/logout', 'App\Http\Controllers\Parent\LoginController@logout');
 
-Route::get('/rolehandler', 'App\Http\Controllers\HomeController@rolehandler');
+// Route::get('/rolehandler', 'App\Http\Controllers\HomeController@rolehandler');
 
 // Home
-Route::get('/', 'App\Http\Controllers\HomeController@index');
 
-// Mitra
-Route::get('/mitra/ppkm', 'App\Http\Controllers\Parent\MitraController@index');
-Route::get('/mitra/ppkm/umkm', 'App\Http\Controllers\parent\MitraController@mitra_umkm');
+Route::controller(AuthController::class)->group(function () {
+    
+    Route::middleware('guest')->group(function () {
+        Route::get('/', 'App\Http\Controllers\HomeController@index');
+        Route::get('login', 'index')->name('login');
+        Route::get('register', 'register')->name('register');
+        Route::get('reset', 'reset')->name('reset');
+        Route::post('resetpassword', 'reset_password')->name('reset_password');
+    });
 
-// Store
-Route::resource('/store', SellerController::class);
+    Route::middleware('auth')->group(function () {
+        Route::get('edit_profile', 'edit_profile')->name('edit_profile');
+        Route::put('update_profile', 'update_profile')->name('update_profile');
+        Route::put('update_pertanyaan', 'update_pertanyaan')->name('update_pertanyaan');
+    });
+});
 
-// Product
-Route::resource('/product', ProductController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'App\Http\Controllers\HomeController@user')->name('home')->middleware('question');
 
-// Wishlist
-Route::resource('/wishlist', WishlistController::class)->middleware('auth');
+    Route::get('/question', 'App\Http\Controllers\AuthController@question')->name('question');
 
-// Account
-Route::resource('/account', AccountController::class)->middleware('auth');
+    Route::post('/store_question', 'App\Http\Controllers\AuthController@store')->name('store_question');
 
-// Profile
-Route::resource('/profile', ProfileController::class)->middleware('auth');
+    Route::middleware('admin')->group(function () {
+        // 
+    });
 
-// Category
-Route::resource('/category', CategoryController::class);
+    Route::middleware('user')->group(function () {
+        // 
+    });
 
-// Cart
-Route::resource('/cart', CartController::class);
-
-Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
-Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
-Route::get('/discovery', 'App\Http\Controllers\HomeController@discovery');
-Route::get('/promotion', 'App\Http\Controllers\HomeController@promotion');
-Route::get('/information', 'App\Http\Controllers\HomeController@information');
-Route::get('/brand', 'App\Http\Controllers\HomeController@brand');
+    Route::middleware('seller')->group(function () {
+        // 
+    });
+});
 
 
-Route::get('/keranjang', 'App\Http\Controllers\HomeController@keranjang');
+
+// Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
+// Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
+// Route::get('/discovery', 'App\Http\Controllers\HomeController@discovery');
+// Route::get('/promotion', 'App\Http\Controllers\HomeController@promotion');
+// Route::get('/information', 'App\Http\Controllers\HomeController@information');
+// Route::get('/brand', 'App\Http\Controllers\HomeController@brand');
+// Route::get('/keranjang', 'App\Http\Controllers\HomeController@keranjang');
