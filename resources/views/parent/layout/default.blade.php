@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body class="windowsphone-detection android-detection ios-detection">
 
     <!-- loader -->
     <div id="loader">

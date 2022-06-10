@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'seller' => \App\Http\Middleware\Seller::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'user' => \App\Http\Middleware\User::class,
-        'question' => \App\Http\Middleware\Question::class
+        'question' => \App\Http\Middleware\Question::class,
+        'device-redirect' => \App\Http\Middleware\DeviceRedirect::class,
     ];
 }
