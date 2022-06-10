@@ -67,7 +67,7 @@
                             @auth
                                 @if($wishlist == false)
                                     @foreach ($product_detail as $item)
-                                    <form method="post" action="/wishlist/">
+                                    <form method="post" action="{{ url('/wishlist/') }}">
                                         @csrf
                                         <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
                                         <input type="hidden" name="id_produk" value="{{$item->id}}">

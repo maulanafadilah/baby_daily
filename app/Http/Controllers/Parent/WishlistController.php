@@ -22,7 +22,7 @@ class WishlistController extends Controller
 
         // Component
         $header = false;
-        $search = true;
+        $search = false;
         $extraHeader = false;
         $footer = false;
         $bottom = false;

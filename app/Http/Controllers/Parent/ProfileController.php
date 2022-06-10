@@ -55,6 +55,7 @@ class ProfileController extends Controller
                            'footer', 
                            'bottom', 
                            'sidebar',
+                           'profile_pic'
                        ));
         }
         else{            

@@ -52,7 +52,7 @@ Route::resource('/category', CategoryController::class);
 
 /*------------------------------------------------------------------------------------- */
 
-Route::domain('seller.'. env('APP_URL'))->group(function () {
+Route::domain('ppkm.'. env('APP_URL'))->group(function () {
     Route::get('/', 'App\Http\Controllers\Parent\MitraController@index');
 });
 
