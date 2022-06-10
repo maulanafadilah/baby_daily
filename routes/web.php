@@ -1,6 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Sellers\Dashboard;
+use App\Http\Controllers\Sellers\DashboardController;
+use App\Http\Controllers\Sellers\NoteBooksController;
+use App\Http\Controllers\Sellers\ProductController;
+use App\Http\Controllers\Sellers\ProductsController;
+use App\Http\Controllers\Sellers\ProfileController;
+use App\Http\Controllers\Sellers\SellerProductsController;
+use App\Http\Controllers\Sellers\SellersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +42,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', 'App\Http\Controllers\HomeController@user')->name('home')->middleware('question');
+    // Route::get('/home', 'App\Http\Controllers\HomeController@user')->name('home')->middleware('question');
 
     Route::get('/question', 'App\Http\Controllers\AuthController@question')->name('question');
 
@@ -49,7 +57,21 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('seller')->group(function () {
-        // 
+        Route::middleware('question')->group(function () {
+            Route::resource('profile', ProfileController::class)->except([
+                'destroy'
+            ]);
+            Route::middleware('profile')->group(function () {
+                Route::controller(DashboardController::class)->group(function () {
+                    Route::get('/home', 'index')->name('home');
+                    Route::get('seller_faq', 'faq')->name('seller_faq');
+                    Route::get('seller_bantuan', 'bantuan')->name('seller_bantuan');
+                });
+
+                Route::resource('notebooks', NoteBooksController::class);
+                Route::resource('sellerproducts', SellerProductsController::class);
+            });
+        });
     });
 });
 Route::get('/kms', 'App\Http\Controllers\HomeController@kms');

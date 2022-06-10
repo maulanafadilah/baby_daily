@@ -68,19 +68,17 @@ class AuthController extends Controller
         $this->validate($request, [
             'nomor_telepon'     => 'required',
             'password'      => $this->passwordRules(),
-            'pertanyaan'     => 'required|string',
+            'pertanyaan'     => 'required|numeric',
             'jawaban'     => 'required|string',
         ]);
 
         // cek akun
         $users = User::where('nomor_telepon', $request->nomor_telepon)
-            ->where('pertanyaan', $request->pertanyaan)->where('jawaban', $request->jawaban)->count();
+            ->where('pertanyaan', $request->pertanyaan)->first();
 
-        if ($users == 1) {
+        if ($users && Hash::check($request->jawaban, $users->jawaban)) {
             $password = Hash::make($request->password);
             User::where('nomor_telepon', $request->nomor_telepon)
-                ->where('pertanyaan', $request->pertanyaan)
-                ->where('jawaban', $request->jawaban)
                 ->update(['password' => $password]);
 
             return redirect()->route('login')->with('success', 'Berhasil Mengganti Password');

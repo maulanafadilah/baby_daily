@@ -16,7 +16,7 @@ class Products extends Model
      */
 
     protected $table = 'products';
-    protected $primaryKey = 'id_produk';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'nama_produk',
         'harga',
@@ -24,6 +24,10 @@ class Products extends Model
         'stok',
         'deskripsi',
         'id_kategori',
-        'id_penjual'
+        'id_penjual',
+        'link_tokped',
+        'link_shopee',
+        'link_buka',
+        'cover'
     ];
 }

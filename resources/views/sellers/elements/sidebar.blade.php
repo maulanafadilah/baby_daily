@@ -20,43 +20,12 @@
 
         <ul class="listview flush transparent no-line image-listview mt-2">
             <li>
-                <a href="/edit_profile" class="item">
+                <a href="#" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="at-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Akun
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="app-components.html" class="item">
-                    <div class="icon-box bg-primary">
-                        <ion-icon name="map-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        Alamat
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="app-pages.html" class="item">
-                    <div class="icon-box bg-primary">
-                        <ion-icon name="receipt-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        <div>Daftar Transaksi</div>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="page-chat.html" class="item">
-                    <div class="icon-box bg-primary">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        <div>Ulasan</div>
-                        <span class="badge badge-danger">5</span>
                     </div>
                 </a>
             </li>
@@ -67,7 +36,7 @@
         </div>
         <ul class="listview image-listview flush transparent no-line">
             <li>
-                <a href="app-pages.html" class="item">
+                <a href="{{ route('seller_bantuan') }}" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="help-outline"></ion-icon>
                     </div>
@@ -77,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a href="app-pages.html" class="item">
+                <a href="#" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="information-outline"></ion-icon>
                     </div>

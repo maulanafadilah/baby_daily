@@ -18,6 +18,8 @@ class HomeController extends Controller
         $search = false;
         $extraHeader = false;
         $footer = true;
+        // if (auth()->user()->id_peranan == 5) {
+        // }
         $bottom = true;
         $sidebar = false;
 
@@ -122,12 +124,13 @@ class HomeController extends Controller
 
         // Component
         $header = 'auth';
+        $roles = auth()->user()->id_peranan;
         $search = false;
         $extraHeader = false;
         $footer = true;
         $bottom = true;
         $sidebar = true;
 
-        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles'));
     }
 }

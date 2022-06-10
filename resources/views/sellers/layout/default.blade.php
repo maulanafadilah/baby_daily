@@ -16,6 +16,9 @@
     <link rel="manifest" href="__manifest.json">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="assets/css/custom-style.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @yield('extention')
     @yield('style')
 
 </head>
@@ -29,24 +32,26 @@
     <!-- * loader -->
 
     <!-- App Header -->
-    @if($header == 'default')
-    @include('parent.elements.header')
+    @if($header == 'seller_profile' && $roles == 5)
+    @include('sellers.elements.header-profile')
+    @elseif($header == 'seller_product' && $roles == 5)
+    @include('sellers.elements.header-produk')
     @elseif($header == 'auth' && $roles == 5)
     @include('sellers.elements.header-auth')
-    @elseif($header == 'auth' && $roles == 4)
-    @include('parent.elements.header-auth')
     @endif
     <!-- * App Header -->
 
     <!-- Search Component -->
     @if($search == true)
-    @include('parent.elements.search')
+    @include('sellers.elements.search')
+    @elseif($search == 'seller_product')
+    @include('sellers.elements.search-produk')
     @endif
     <!-- * Search Component -->
 
     <!-- Extra Header -->
     @if($extraHeader == true)
-    @include('parent.elements.extraHeader')
+    @include('sellers.elements.extraHeader')
     @endif
     <!-- * Extra Header -->
 
@@ -57,7 +62,7 @@
 
         <!-- app footer -->
         @if($footer == true)
-        @include('parent.elements.footer')
+        @include('sellers.elements.footer')
         @endif
         <!-- * app footer -->
 
@@ -67,23 +72,17 @@
 
     <!-- App Bottom Menu -->
     @if($bottom == true)
-    @include('parent.elements.bottomMenu')
+    @include('sellers.elements.bottomMenu')
     @endif
     <!-- * App Bottom Menu -->
 
     <!-- App Sidebar -->
     @if($sidebar == true && $roles != 5)
-    @include('parent.elements.sidebar')
+    @include('sellers.elements.sidebar')
     @elseif($sidebar == true && $roles == 5)
     @include('sellers.elements.sidebar')
     @endif
     <!-- * App Sidebar -->
-
-    <!-- welcome notification  -->
-
-    <!-- @include('parent.elements.welcome') -->
-
-    <!-- * welcome notification -->
 
     <!-- ============== Js Files ==============  -->
     <!-- Bootstrap -->
@@ -96,6 +95,10 @@
     <script src="{{ URL::asset('assets/js/plugins/progressbar-js/progressbar.min.js') }}"></script>
     <!-- Base Js File -->
     <script src="{{ URL::asset('assets/js/base.js') }}"></script>
+
+    <script type="text/javascript">
+        CKEDITOR.replace('deskripsi');
+    </script>
 
     <script>
         // Trigger welcome notification after 5 seconds

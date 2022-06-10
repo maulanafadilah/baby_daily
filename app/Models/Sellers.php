@@ -31,6 +31,8 @@ class Sellers extends Model
         'banner_2',
         'banner_3',
         'flag',
-        'id_pengguna'
+        'id_pengguna',
+        'link_whatsapp',
+        'link_ecommerce'
     ];
 }

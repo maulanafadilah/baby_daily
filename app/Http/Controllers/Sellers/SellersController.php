@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sellers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sellers;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SellersController extends Controller
 {
-    public function index()
+    public function add()
     {
         // Global
         $page_title = 'Buat Toko';

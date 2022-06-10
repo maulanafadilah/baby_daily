@@ -33,11 +33,11 @@
             <div class="form-group boxed">
                 <div class="input-wrapper">
                     <select class="form-select @error('pertanyaan') is-invalid @enderror" aria-label="Default select example" name="pertanyaan">
-                        <option value="Siapakah nama ayahmu?">Siapakah nama ayahmu?</option>
-                        <option value="Siapakah nama ibumu?">Siapakah nama ibumu?</option>
-                        <option value="Siapakah nama gurumu?">Siapakah nama gurumu?</option>
-                        <option value="Apa makanan favoritmu?">Apa makanan favoritmu?</option>
-                        <option value="Apakah nama hewan peliharaanmu?">Apakah nama hewan peliharaanmu?</option>
+                        <option value="1">Siapakah nama ayahmu?</option>
+                        <option value="2">Siapakah nama ibumu?</option>
+                        <option value="3">Siapakah nama gurumu?</option>
+                        <option value="4">Apa makanan favoritmu?</option>
+                        <option value="5">Apakah nama hewan peliharaanmu?</option>
                     </select>
                 </div>
                 @error('pertanyaan')
