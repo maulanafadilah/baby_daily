@@ -1,5 +1,5 @@
 {{-- Extends layout --}}
-@extends('parent.layout.default')
+@extends('sellers.layout.default')
 
 {{-- Content --}}
 @section('content')

@@ -23,7 +23,7 @@ class HomeController extends Controller
         $bottom = true;
         $sidebar = false;
 
-        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+        return view('welcome', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
 
     public function keranjang()
