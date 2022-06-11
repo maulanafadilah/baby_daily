@@ -25,7 +25,11 @@
 
         <div class="section mt-3">
             <div class="avatar" style="text-align:center">
+                @if($profile_pic == true)
+                <img src="{{asset('storage/'.$profile_pic->foto_orangtua)}}" alt="avatar" class="imaged w64 rounded">
+                @else
                 <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="avatar" class="imaged w64 rounded">
+                @endif
             </div>
                 <div class="in mt-1" style="text-align:center">
                     <h4 class="text-secondary">ID Pengguna: {{auth()->user()->id}}</h4>

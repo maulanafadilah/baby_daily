@@ -127,7 +127,7 @@
         <!-- *Informasi -->
 
         <!-- Promo Hari Ini -->
-        <!-- <div class="section full mt-3">
+        <div class="section full mt-3">
             <div class="section-title">Promo Hari Ini <span><a href="/promotion">Lihat Semua</a></span></div>
             <div class="wide-block pt-1 pb-1 mt-1" style="border: 0;" style="background: #FBFEFF;">
                 <div class="carousel-multiple splide">
@@ -204,7 +204,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- *Promo Hari Ini -->
 
         <!-- Terlaris -->
@@ -247,15 +247,15 @@
         <!-- *Terlaris -->
 
         <!-- Single Banner -->
-        <!-- <div class="section mt-5">
+        <div class="section mt-5">
             <div class="card">
                 <img src="assets/img/sample/photo/wide3.jpg" class="card-img overlay-img single-banner" alt="image" onclick="window.location.href='/information'">
             </div>
-        </div> -->
+        </div>
         <!-- #Single Banner -->
 
         <!-- Brand Pilihan -->
-        <!-- <div class="section full mt-3">
+        <div class="section full mt-3">
             <div class="section-title">Brand Pilihan <span><a href="/brand">Lihat Semua</a></span></div>
             <div class="carousel-small splide mt-1"  style="margin-left: -78px !important; padding-right: -12px !important;">
                 <div class="splide__track">
@@ -275,12 +275,12 @@
                     </ul>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- *Brand Pilihan -->
 
         <!-- Umkm Mitra -->
         <div class="section mt-3">
-            <div class="section-title">UMKM Komunitas PKKM<span><a href="mitra/ppkm">Lihat Semua</a></span></div>
+            <div class="section-title">UMKM Komunitas PKKM<span><a href="https://ppkm.babydaily.id">Lihat Semua</a></span></div>
             <div class="carousel-multiple splide mt-1">
                     <div class="splide__track">
                         <ul class="splide__list">
@@ -302,7 +302,7 @@
         
         <!-- Seasonal Promotion -->
 
-        <!-- <div class="section full mt-3">
+        <div class="section full mt-3">
             <div class="section-title">Spesial Ramadhan <span><a href="/promotion">Lihat Semua</a></span></div>
             <div class="wide-block pt-1 pb-1 mt-1" style="border: 0;" style="background: #FBFEFF;">
                 <div class="carousel-multiple splide">
@@ -379,7 +379,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <!-- *Seasonal Promotion -->
 
@@ -477,10 +477,5 @@
         });
         </script>
 
-        <!-- Load More -->
-        <!-- <div class="ajax-load text-center" style="display: none;">
-            <img src="{{asset('img/load.gif')}}">
-        </div> -->
-        <!-- *Load More -->
         
 @endsection

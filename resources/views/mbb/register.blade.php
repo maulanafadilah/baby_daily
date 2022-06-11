@@ -65,19 +65,7 @@
                 @endif
             </div>
 
-            <div class="form-group boxed">
-                <div class="input-wrapper">
-                    <label class="form-label" for="peranan">Jenis Akun</label>
-                    <select class="form-select @error('id_peranan') is-invalid @enderror" aria-label="Default select example" name="id_peranan" id="peranan">
-                        <option>Pilih..</option>
-                        <option value="5">Penjual / UMKM</option>
-                        <option value="4">Customer / Orang Tua</option>
-                    </select>
-                </div>
-                @error('id_peranan')
-                <span class="text-danger">{{ $message }}</span>
-                @endif
-            </div>
+            <input type="hidden" name="id_peranan" value="4">
 
             <div class="form-button-group">
                 <button type="submit" class="btn btn-primary btn-block btn-lg">Daftar</button>
