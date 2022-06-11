@@ -23,8 +23,8 @@
 
 <div class="section mt-3">
     <div class="avatar" style="text-align:center">
-        @if($sellers->nama_toko == true)
-        <img src="asset('storage/'.$sellers->foto_penjual)" alt="avatar" class="imaged w64 rounded">
+        @if($sellers->foto_penjual == true)
+        <img src="{{ asset('storage/'.$sellers->foto_penjual) }}" alt="avatar" class="imaged w64 rounded">
         @else
         <img src="assets/img/sample/avatar/avatar1.jpg" alt="avatar" class="imaged w64 rounded">
         @endif

@@ -86,6 +86,7 @@
 
     <!-- ============== Js Files ==============  -->
     <!-- Bootstrap -->
+    <!-- yield('script') -->
     <script src="{{ URL::asset('assets/js/lib/bootstrap.min.js') }}"></script>
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Sellers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -219,6 +220,14 @@ class ProfileController extends Controller
                 ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
                 ->get()[0];
             return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
+        } elseif ($id == 12) {
+            $page_title = 'Edit Photo Toko';
+            $page_description = "Edit Photo Toko Sellers Baby Daily";
+            $header_title = 'Edit Photo Toko';
+            $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
+                ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
+                ->get()[0];
+            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
         }
     }
 
@@ -358,6 +367,25 @@ class ProfileController extends Controller
                 ]);
 
             return redirect()->route('profile.show', 1)->with('success', 'Kode Pos berhasil diupdate');
+        } elseif ($id == 12) {
+            $request->validate([
+                'gambar' => 'required',
+                'gambar.*' => 'mimes:png,jpg,jpeg|max:10240'
+            ]);
+
+            $photo = Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
+                ->get('foto_penjual')[0];
+
+            if ($photo->foto_penjual != null) {
+                Storage::delete($photo->foto_penjual);
+            }
+
+            $image = $request->file('gambar')->store('profile');
+
+            Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
+                ->update(['foto_penjual' => $image]);
+
+            return redirect()->route('profile.show', 1)->with('success', 'Photo penjual berhasil diupdate');
         }
     }
 

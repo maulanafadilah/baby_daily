@@ -43,7 +43,7 @@
             <li>
                 <a href="{{ route('sellerproducts.show',$product->id) }}" class="item">
                     <div class="imageWrapper">
-                        <img src="/products/images/{{ $product->gambar }}" alt="image" class="imaged w64">
+                        <img src="{{ asset('storage/'.$product->cover) }}" alt="image" class="imaged w64">
                     </div>
                     <div class="in">
                         <div>

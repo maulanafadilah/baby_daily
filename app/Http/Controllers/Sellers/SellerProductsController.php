@@ -28,8 +28,8 @@ class SellerProductsController extends Controller
             ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
             ->select('products.id', 'products.cover', 'products.nama_produk', 'products.harga')
             ->get();
-        $page_title = 'Tambah Produk';
-        $page_description = "Tambah Produk Sellers Baby Daily";
+        $page_title = 'Produk';
+        $page_description = "Produk Sellers Baby Daily";
         $action = __FUNCTION__;
 
         // Component
@@ -181,7 +181,8 @@ class SellerProductsController extends Controller
     public function edit($id)
     {
         $products = Products::join('productimages', 'productimages.id_produk', '=', 'products.id')
-            ->where('products.id', $id)->first();
+            ->where('products.id', $id)
+            ->select('products.id', 'products.nama_produk', 'products.harga', 'products.brand', 'products.stok', 'products.deskripsi', 'products.link_buka', 'products.link_tokped', 'products.link_shopee')->get()[0];
         $categories = DB::table('categories')->get();
         $page_title = 'Edit Produk';
         $page_description = "Edit Produk Sellers Baby Daily";
@@ -210,7 +211,6 @@ class SellerProductsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'gambar.*' => 'mimes:png,jpg,jpeg',
             'nama_produk' => 'required',
             'harga' => 'required|numeric',
             'brand' => 'required',
@@ -229,32 +229,32 @@ class SellerProductsController extends Controller
                 'id_kategori' => $request->id_kategori
             ]);
 
-        if ($request->hasFile('gambar')) {
+        // if ($request->hasFile('gambar')) {
 
-            $images = ProductImages::where('id_produk', $id)
-                ->select('id', 'gambar')
-                ->get();
+        //     $images = ProductImages::where('id_produk', $id)
+        //         ->select('id', 'gambar')
+        //         ->get();
 
-            foreach ($request->file('gambar') as $key => $image) {
-                $photo = $image->store('products');
-                ProductImages::where('id', $images->id)
-                    ->update([
-                        'gambar' => $photo,
-                        'id_produk' => $id
-                    ]);
-            }
+        //     foreach ($request->file('gambar') as $key => $image) {
+        //         $photo = $image->store('products');
+        //         ProductImages::where('id', $images->id)
+        //             ->update([
+        //                 'gambar' => $photo,
+        //                 'id_produk' => $id
+        //             ]);
+        //     }
 
-            $image = $request->file('gambar');
-            $file_name = rand(1000, 9999999) . $image->getClientOriginalName();
+        //     $image = $request->file('gambar');
+        //     $file_name = rand(1000, 9999999) . $image->getClientOriginalName();
 
 
 
-            File::delete(public_path('products/images/' . $images->gambar));
-            $image->move('products/images', $file_name);
+        //     File::delete(public_path('products/images/' . $images->gambar));
+        //     $image->move('products/images', $file_name);
 
-            ProductImages::where('id', $images->id)
-                ->update(['gambar' => $file_name]);
-        }
+        //     ProductImages::where('id', $images->id)
+        //         ->update(['gambar' => $file_name]);
+        // }
 
 
         if ($request->link_buka) {

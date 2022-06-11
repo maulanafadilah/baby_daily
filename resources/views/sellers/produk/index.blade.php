@@ -2,6 +2,23 @@
 @extends('sellers.layout.default')
 {{-- Content --}}
 @section('content')
+
+@if(session()->has('success'))
+<div id="toast-12" class="toast-box toast-center show">
+    <div class="in">
+        <div class="text">
+            {{ session('success') }}
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        closeToastBox('toast-12')
+    }, 2000);
+</script>
+@endif
+
 <div class="header-large-title">
     <h1 class="title">Produk Anda</h1>
     <h4 class="subtitle">{{ $sellers->nama_toko }}</h4>

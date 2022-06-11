@@ -1,14 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Sellers\Dashboard;
 use App\Http\Controllers\Sellers\DashboardController;
+use App\Http\Controllers\Sellers\ImagesController;
 use App\Http\Controllers\Sellers\NoteBooksController;
-use App\Http\Controllers\Sellers\ProductController;
-use App\Http\Controllers\Sellers\ProductsController;
 use App\Http\Controllers\Sellers\ProfileController;
 use App\Http\Controllers\Sellers\SellerProductsController;
-use App\Http\Controllers\Sellers\SellersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +67,7 @@ Route::middleware('auth')->group(function () {
 
                 Route::resource('notebooks', NoteBooksController::class);
                 Route::resource('sellerproducts', SellerProductsController::class);
+                Route::resource('images', ImagesController::class);
             });
         });
     });

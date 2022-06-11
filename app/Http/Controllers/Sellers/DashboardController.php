@@ -16,9 +16,8 @@ class DashboardController extends Controller
             ->first();
 
         $products = Products::join('sellers', 'sellers.id', '=', 'products.id_penjual')
-            ->join('productimages', 'productimages.id_produk', '=', 'products.id')
             ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
-            ->select('products.id', 'products.nama_produk', 'productimages.gambar', 'products.stok')
+            ->select('products.id', 'products.nama_produk', 'products.cover', 'products.stok')
             ->latest('products.created_at')->paginate(5);
 
         $stok = Products::join('sellers', 'sellers.id', '=', 'products.id_penjual')

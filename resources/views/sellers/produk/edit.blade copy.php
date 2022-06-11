@@ -28,6 +28,22 @@
         <form action="{{ route('sellerproducts.update',$products->id) }}" enctype="multipart/form-data" method="POST">
             @csrf
             @method('PUT')
+            <label class="form-label" for="fileUpload1">Upload Gambar</label>
+            <div class="custom-file-upload" id="fileUpload1">
+                <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg" name="gambar[]" multiple>
+                <label for="fileuploadInput">
+                    <span>
+                        <strong>
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <img src="/products/images/{{ $products->gambar }}" alt="">
+                        </strong>
+                    </span>
+                </label>
+                @error('gambar')
+                <span class="text-danger">{{ $message }}</span>
+                @endif
+            </div>
+
             <div class="form-group boxed mt-2">
                 <div class="input-wrapper">
                     <label class="form-label" for="namaproduk">Nama Produk</label>

@@ -157,12 +157,10 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Provinsi</h4>
-                <select class="form-select @error('provinsi') is-invalid @enderror" aria-label="Default select example" name="provinsi" id="provinsi">
-                    <!-- foreach($categories as $category) -->
-                    <!-- <option value="$category->id">$category->nama_kategori</option> -->
-                    <option value="1">testing</option>
-                    <!-- endforeach -->
-                </select>
+                <input type="number" class="form-control" name="provinsi" id="provinsi" placeholder="Provinsi" value="{{ old('provinsi') ?? $profile->provinsi }}">
+                <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                </i>
             </div>
             @error('provinsi')
             <span class="text-danger">{{ $message }}</span>
@@ -181,12 +179,10 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kota/Kabupaten</h4>
-                <select class="form-select @error('kabupaten') is-invalid @enderror" aria-label="Default select example" name="kabupaten" id="kabupaten">
-                    <!-- foreach($categories as $category) -->
-                    <!-- <option value="$category->id">$category->nama_kategori</option> -->
-                    <option value="1">testing</option>
-                    <!-- endforeach -->
-                </select>
+                <input type="number" class="form-control" name="kabupaten" id="kabupaten" placeholder="kabupaten" value="{{ old('kabupaten') ?? $profile->kabupaten }}">
+                <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                </i>
             </div>
             @error('kabupaten')
             <span class="text-danger">{{ $message }}</span>
@@ -205,12 +201,10 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kecamatan</h4>
-                <select class="form-select @error('kecamatan') is-invalid @enderror" aria-label="Default select example" name="kecamatan" id="kecamatan">
-                    <!-- foreach($categories as $category) -->
-                    <!-- <option value="$category->id">$category->nama_kategori</option> -->
-                    <option value="1">testing</option>
-                    <!-- endforeach -->
-                </select>
+                <input type="number" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" value="{{ old('kecamatan') ?? $profile->kecamatan }}">
+                <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                </i>
             </div>
             @error('kecamatan')
             <span class="text-danger">{{ $message }}</span>
@@ -229,12 +223,10 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kelurahan</h4>
-                <select class="form-select @error('kelurahan') is-invalid @enderror" aria-label="Default select example" name="kelurahan" id="kelurahan">
-                    <!-- foreach($categories as $category) -->
-                    <!-- <option value="$category->id">$category->nama_kategori</option> -->
-                    <option value="1">testing</option>
-                    <!-- endforeach -->
-                </select>
+                <input type="number" class="form-control" name="kelurahan" id="kelurahan" placeholder="Kelurahan" value="{{ old('kelurahan') ?? $profile->kelurahan }}">
+                <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                </i>
             </div>
             @error('kelurahan')
             <span class="text-danger">{{ $message }}</span>
@@ -289,6 +281,32 @@
 </div>
 @break
 
+@case($id == 12)
+<div class="container">
+    <form action="{{ route('profile.update',$id) }}" method="post" enctype="multipart/form-data">
+        @method('PUT')
+        @csrf
+        <label class="form-label mt-2" for="fileUpload1">Upload Gambar</label>
+        <div class="custom-file-upload" id="fileUpload1">
+            <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg" name="gambar">
+            <label for="fileuploadInput">
+                <span>
+                    <strong>
+                        <ion-icon name="cloud-upload-outline"></ion-icon>
+                        <i>Klik Disini Untuk Upload</i>
+                    </strong>
+                </span>
+            </label>
+            @error('gambar')
+            <span class="text-danger">{{ $message }}</span>
+            @endif
+        </div>
+        <button class="btn btn-primary btn-block mt-2" type="submit">Simpan</button>
+    </form>
+</div>
+@break
+
+@endswitch
 <script>
     function show() {
         var x = document.getElementById("target");
@@ -299,6 +317,4 @@
         }
     }
 </script>
-@break
-@endswitch
 @endsection
