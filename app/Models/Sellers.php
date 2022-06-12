@@ -35,4 +35,25 @@ class Sellers extends Model
         'link_whatsapp',
         'link_ecommerce'
     ];
+
+    // Inverse
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    // Inverse
+    public function regency()
+    {
+        return $this->belongsTo(Regency::class);
+    }
+    // Inverse
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+    // Inverse
+    public function village()
+    {
+        return $this->belongsTo(Village::class);
+    }
 }

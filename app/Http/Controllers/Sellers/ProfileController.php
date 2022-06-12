@@ -81,11 +81,11 @@ class ProfileController extends Controller
             'nama_penjual' => auth()->user()->nama_lengkap,
             'nomor_telepon' => auth()->user()->nomor_telepon,
             'nama_toko' => $request->nama_toko,
-            'provinsi' => $request->provinsi,
-            'kabupaten' => $request->kabupaten,
-            'kecamatan' => $request->kecamatan,
-            'kelurahan' => $request->kelurahan,
-            'alamat' => $request->alamat,
+            'province_id' => $request->provinsi,
+            'regency_id' => $request->kabupaten,
+            'district_id' => $request->kecamatan,
+            'village_id' => $request->kelurahan,
+            'alamat' => strtoupper($request->alamat),
             'kode_pos' => $request->kode_pos,
             'tag' => $request->tag,
             'flag' => 1,
@@ -104,6 +104,8 @@ class ProfileController extends Controller
     public function show($id)
     {
         $sellers = Sellers::where('id_pengguna', auth()->user()->id)->first();
+        $domicile = Sellers::with(['province', 'regency', 'district', 'village'])
+            ->where('id_pengguna', auth()->user()->id)->first();
         $page_title = 'Profile Toko';
         $page_description = "Profile Toko Sellers Baby Daily";
         $action = __FUNCTION__;
@@ -118,7 +120,7 @@ class ProfileController extends Controller
         $sidebar = true;
         $header_title = 'Profile Toko';
 
-        return view('sellers/profile/toko/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'sellers'));
+        return view('sellers/profile/toko/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'sellers', 'domicile'));
     }
 
     /**
@@ -173,54 +175,16 @@ class ProfileController extends Controller
                 ->get()[0];
             return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
         } elseif ($id == 6) {
-            $page_title = 'Edit Provinsi Toko';
-            $page_description = "Edit Provinsi Toko Sellers Baby Daily";
-            $header_title = 'Edit Provinsi Toko';
-            $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
-                ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
-                ->get()[0];
-            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
-        } elseif ($id == 7) {
-            $page_title = 'Edit Kota/Kabupaten Toko';
-            $page_description = "Edit Kota/Kabupaten Toko Sellers Baby Daily";
-            $header_title = 'Edit Kota/Kabupaten Toko';
-            $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
-                ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
-                ->get()[0];
-            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
-        } elseif ($id == 8) {
-            $page_title = 'Edit Kecamatan Toko';
-            $page_description = "Edit Kecamatan Toko Sellers Baby Daily";
-            $header_title = 'Edit Kecamatan Toko';
-            $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
-                ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
-                ->get()[0];
-            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
-        } elseif ($id == 9) {
-            $page_title = 'Edit Kelurahan Toko';
-            $page_description = "Edit Kelurahan Toko Sellers Baby Daily";
-            $header_title = 'Edit Kelurahan Toko';
-            $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
-                ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
-                ->get()[0];
-            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
-        } elseif ($id == 10) {
             $page_title = 'Edit Alamat Toko';
             $page_description = "Edit Alamat Toko Sellers Baby Daily";
             $header_title = 'Edit Alamat Toko';
+            $domicile = Sellers::with(['province', 'regency', 'district', 'village'])
+                ->where('id_pengguna', auth()->user()->id)->first();
             $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
                 ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
                 ->get()[0];
-            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
-        } elseif ($id == 11) {
-            $page_title = 'Edit Kode Pos Toko';
-            $page_description = "Edit Kode Pos Toko Sellers Baby Daily";
-            $header_title = 'Edit Kode Pos Toko';
-            $profile = Sellers::join('users', 'sellers.nomor_telepon', '=', 'users.nomor_telepon')
-                ->where('sellers.nomor_telepon', auth()->user()->nomor_telepon)
-                ->get()[0];
-            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id'));
-        } elseif ($id == 12) {
+            return view('sellers/profile/edit', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'roles', 'header_title', 'profile', 'id', 'domicile'));
+        } elseif ($id == 7) {
             $page_title = 'Edit Photo Toko';
             $page_description = "Edit Photo Toko Sellers Baby Daily";
             $header_title = 'Edit Photo Toko';
@@ -298,76 +262,26 @@ class ProfileController extends Controller
         } elseif ($id == 6) {
 
             $request->validate([
-                'provinsi' => 'required'
-            ]);
-
-            Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
-                ->update([
-                    'provinsi' => $request->provinsi
-                ]);
-
-            return redirect()->route('profile.show', 1)->with('success', 'Provinsi berhasil diupdate');
-        } elseif ($id == 7) {
-
-            $request->validate([
-                'kabupaten' => 'required'
-            ]);
-
-            Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
-                ->update([
-                    'kabupaten' => $request->kabupaten
-                ]);
-
-            return redirect()->route('profile.show', 1)->with('success', 'Kabupaten berhasil diupdate');
-        } elseif ($id == 8) {
-
-            $request->validate([
-                'kecamatan' => 'required'
-            ]);
-
-            Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
-                ->update([
-                    'kecamatan' => $request->kecamatan
-                ]);
-
-            return redirect()->route('profile.show', 1)->with('success', 'Kecamatan berhasil diupdate');
-        } elseif ($id == 9) {
-
-            $request->validate([
-                'kelurahan' => 'required'
-            ]);
-
-            Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
-                ->update([
-                    'kelurahan' => $request->kelurahan
-                ]);
-
-            return redirect()->route('profile.show', 1)->with('success', 'Kelurahan berhasil diupdate');
-        } elseif ($id == 10) {
-
-            $request->validate([
-                'alamat' => 'required'
-            ]);
-
-            Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
-                ->update([
-                    'alamat' => $request->alamat
-                ]);
-
-            return redirect()->route('profile.show', 1)->with('success', 'Alamat berhasil diupdate');
-        } elseif ($id == 11) {
-
-            $request->validate([
+                'provinsi' => 'required',
+                'kabupaten' => 'required',
+                'kecamatan' => 'required',
+                'kelurahan' => 'required',
+                'alamat' => 'required',
                 'kode_pos' => 'required|numeric'
             ]);
 
             Sellers::where('nomor_telepon', auth()->user()->nomor_telepon)
                 ->update([
+                    'province_id' => $request->provinsi,
+                    'regency_id' => $request->kabupaten,
+                    'district_id' => $request->kecamatan,
+                    'village_id' => $request->kelurahan,
+                    'alamat' => strtoupper($request->alamat),
                     'kode_pos' => $request->kode_pos
                 ]);
 
-            return redirect()->route('profile.show', 1)->with('success', 'Kode Pos berhasil diupdate');
-        } elseif ($id == 12) {
+            return redirect()->route('profile.show', 1)->with('success', 'Alamat berhasil diupdate');
+        } elseif ($id == 7) {
             $request->validate([
                 'gambar' => 'required',
                 'gambar.*' => 'mimes:png,jpg,jpeg|max:10240'

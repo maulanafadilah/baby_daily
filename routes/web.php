@@ -75,3 +75,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
 Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
 Route::get('/wishlist', 'App\Http\Controllers\HomeController@wishlist');
+
+// select2
+Route::get('/provinces', [\App\Http\Controllers\Sellers\ProvinceController::class, 'select'])->name('provinces.select');
+Route::get('/regencies', [\App\Http\Controllers\Sellers\RegencyController::class, 'select'])->name('regencies.select');
+Route::get('/districts', [\App\Http\Controllers\Sellers\DistrictController::class, 'select'])->name('districts.select');
+Route::get('/villages', [\App\Http\Controllers\Sellers\VillageController::class, 'select'])->name('villages.select');

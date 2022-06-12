@@ -30,7 +30,7 @@
         @endif
     </div>
     <div class="in mt-1" style="text-align:center">
-        <a href="{{ route('profile.edit',12) }}" class="text-primary">Ubah Foto Profil</a>
+        <a href="{{ route('profile.edit',8) }}" class="text-primary">Ubah Foto Profil</a>
     </div>
 </div>
 
@@ -55,60 +55,10 @@
         <li>
             <a href="{{ route('profile.edit',6) }}">
                 <div class="col text-secondary">
-                    Provinsi
-                </div>
-                <div class="col">
-                    {{ $sellers->provinsi }}
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('profile.edit',7) }}">
-                <div class="col text-secondary">
-                    Kota/Kabupaten
-                </div>
-                <div class="col">
-                    {{ $sellers->kabupaten }}
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('profile.edit',8) }}">
-                <div class="col text-secondary">
-                    Kecamatan
-                </div>
-                <div class="col">
-                    {{ $sellers->kecamatan }}
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('profile.edit',9) }}">
-                <div class="col text-secondary">
-                    Kelurahan
-                </div>
-                <div class="col">
-                    {{ $sellers->kelurahan }}
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('profile.edit',10) }}">
-                <div class="col text-secondary">
                     Alamat
                 </div>
                 <div class="col">
-                    {{ $sellers->alamat }}
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('profile.edit',11) }}">
-                <div class="col text-secondary">
-                    Kode Pos
-                </div>
-                <div class="col">
-                    {{ $sellers->kode_pos }}
+                    {{ $sellers->alamat }}, Kel.{{ $domicile->village->name }}, Kec.{{ $domicile->district->name }}, {{ $domicile->regency->name }}, Prov.{{ $domicile->province->name }}, Kode Pos {{ $sellers->kode_pos }}
                 </div>
             </a>
         </li>

@@ -157,91 +157,47 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Provinsi</h4>
-                <input type="number" class="form-control" name="provinsi" id="provinsi" placeholder="Provinsi" value="{{ old('provinsi') ?? $profile->provinsi }}">
-                <i class="clear-input">
-                    <ion-icon name="close-circle"></ion-icon>
-                </i>
+                <select id="provinsi" name="provinsi" data-placeholder="Select" class="custom-select w-100">
+                    <option value="{{ $domicile->province->id }}" selected>{{ $domicile->province->name }}</option>
+                </select>
             </div>
             @error('provinsi')
             <span class="text-danger">{{ $message }}</span>
             @endif
         </div>
-        <button class="btn btn-primary btn-block mt-2" type="submit">Simpan</button>
-    </form>
-</div>
-@break
-
-@case($id == 7)
-<div class="container">
-    <form action="{{ route('profile.update',$id) }}" method="post">
-        @method('PUT')
-        @csrf
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kota/Kabupaten</h4>
-                <input type="number" class="form-control" name="kabupaten" id="kabupaten" placeholder="kabupaten" value="{{ old('kabupaten') ?? $profile->kabupaten }}">
-                <i class="clear-input">
-                    <ion-icon name="close-circle"></ion-icon>
-                </i>
+                <select id="kabupaten" name="kabupaten" data-placeholder="Select" class="custom-select w-100">
+                    <option value="{{ $domicile->regency->id }}" selected>{{ $domicile->regency->name }}</option>
+                </select>
             </div>
             @error('kabupaten')
             <span class="text-danger">{{ $message }}</span>
             @endif
         </div>
-        <button class="btn btn-primary btn-block mt-2" type="submit">Simpan</button>
-    </form>
-</div>
-@break
-
-@case($id == 8)
-<div class="container">
-    <form action="{{ route('profile.update',$id) }}" method="post">
-        @method('PUT')
-        @csrf
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kecamatan</h4>
-                <input type="number" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" value="{{ old('kecamatan') ?? $profile->kecamatan }}">
-                <i class="clear-input">
-                    <ion-icon name="close-circle"></ion-icon>
-                </i>
+                <select id="kecamatan" name="kecamatan" data-placeholder="Select" class="custom-select w-100">
+                    <option value="{{ $domicile->district->id }}" selected>{{ $domicile->district->name }}</option>
+                </select>
             </div>
             @error('kecamatan')
             <span class="text-danger">{{ $message }}</span>
             @endif
         </div>
-        <button class="btn btn-primary btn-block mt-2" type="submit">Simpan</button>
-    </form>
-</div>
-@break
-
-@case($id == 9)
-<div class="container">
-    <form action="{{ route('profile.update',$id) }}" method="post">
-        @method('PUT')
-        @csrf
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kelurahan</h4>
-                <input type="number" class="form-control" name="kelurahan" id="kelurahan" placeholder="Kelurahan" value="{{ old('kelurahan') ?? $profile->kelurahan }}">
-                <i class="clear-input">
-                    <ion-icon name="close-circle"></ion-icon>
-                </i>
+                <select id="kelurahan" name="kelurahan" data-placeholder="Select" class="custom-select w-100">
+                    <option value="{{ $domicile->village->id }}" selected>{{ $domicile->village->name }}</option>
+                </select>
             </div>
             @error('kelurahan')
             <span class="text-danger">{{ $message }}</span>
             @endif
         </div>
-        <button class="btn btn-primary btn-block mt-2" type="submit">Simpan</button>
-    </form>
-</div>
-@break
-
-@case($id == 10)
-<div class="container">
-    <form action="{{ route('profile.update',$id) }}" method="post">
-        @method('PUT')
-        @csrf
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Alamat</h4>
@@ -254,16 +210,6 @@
             <span class="text-danger">{{ $message }}</span>
             @endif
         </div>
-        <button class="btn btn-primary btn-block mt-2" type="submit">Simpan</button>
-    </form>
-</div>
-@break
-
-@case($id == 11)
-<div class="container">
-    <form action="{{ route('profile.update',$id) }}" method="post">
-        @method('PUT')
-        @csrf
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <h4 class="subtitle mt-2">Kode Pos</h4>
@@ -281,7 +227,7 @@
 </div>
 @break
 
-@case($id == 12)
+@case($id == 7)
 <div class="container">
     <form action="{{ route('profile.update',$id) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
@@ -318,3 +264,213 @@
     }
 </script>
 @endsection
+
+@push('javascript-internal')
+<script>
+    $(document).ready(function() {
+        // set var id
+        let provinceID = $('#provinsi').val();
+        let regencyID = $('#kabupaten').val();
+        let districtID = $('#kecamatan').val();
+
+        //  select province:start
+        $('#provinsi').select2({
+            allowClear: true,
+            ajax: {
+                url: "{{ route('provinces.select') }}",
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
+        //  select province:end
+
+        //  select regency:start
+        $('#kabupaten').select2({
+            allowClear: true,
+            ajax: {
+                url: "{{ route('regencies.select') }}?provinceID=" + provinceID,
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
+        //  select regency:end
+
+        //  select district:start
+        $('#kecamatan').select2({
+            allowClear: true,
+            ajax: {
+                url: "{{ route('districts.select') }}?regencyID=" + regencyID,
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
+        //  select district:end
+
+        //  select village:start
+        $('#kelurahan').select2({
+            allowClear: true,
+            ajax: {
+                url: "{{ route('villages.select') }}?districtID=" + districtID,
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
+        //  select village:end
+
+
+        //  Event on change select province:start
+        $('#provinsi').change(function() {
+            //clear select
+            $('#kabupaten').empty();
+            $("#kecamatan").empty();
+            $("#kelurahan").empty();
+            //set id
+            provinceID = $(this).val();
+            if (provinceID) {
+                $('#kabupaten').select2({
+                    allowClear: true,
+                    ajax: {
+                        url: "{{ route('regencies.select') }}?provinceID=" + provinceID,
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function(data) {
+                            return {
+                                results: $.map(data, function(item) {
+                                    return {
+                                        text: item.name,
+                                        id: item.id
+                                    }
+                                })
+                            };
+                        }
+                    }
+                });
+            } else {
+                $('#kabupaten').empty();
+                $("#kecamatan").empty();
+                $("#kelurahan").empty();
+            }
+        });
+        //  Event on change select province:end
+
+        //  Event on change select regency:start
+        $('#kabupaten').change(function() {
+            //clear select
+            $("#kecamatan").empty();
+            $("#kelurahan").empty();
+            //set id
+            regencyID = $(this).val();
+            if (regencyID) {
+                $('#kecamatan').select2({
+                    allowClear: true,
+                    ajax: {
+                        url: "{{ route('districts.select') }}?regencyID=" + regencyID,
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function(data) {
+                            return {
+                                results: $.map(data, function(item) {
+                                    return {
+                                        text: item.name,
+                                        id: item.id
+                                    }
+                                })
+                            };
+                        }
+                    }
+                });
+            } else {
+                $("#kecamatan").empty();
+                $("#kelurahan").empty();
+            }
+        });
+        //  Event on change select regency:end
+
+        //  Event on change select district:Start
+        $('#kecamatan').change(function() {
+            //clear select
+            $("#kelurahan").empty();
+            //set id
+            districtID = $(this).val();
+            if (districtID) {
+                $('#kelurahan').select2({
+                    allowClear: true,
+                    ajax: {
+                        url: "{{ route('villages.select') }}?districtID=" + districtID,
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function(data) {
+                            return {
+                                results: $.map(data, function(item) {
+                                    return {
+                                        text: item.name,
+                                        id: item.id
+                                    }
+                                })
+                            };
+                        }
+                    }
+                });
+            }
+        });
+        //  Event on change select district:End
+
+        // EVENT ON CLEAR
+        $('#provinsi').on('select2:clear', function(e) {
+            $("#kabupaten").select2();
+            $("#kecamatan").select2();
+            $("#kelurahan").select2();
+        });
+
+        $('#kabupaten').on('select2:clear', function(e) {
+            $("#kecamatan").select2();
+            $("#kelurahan").select2();
+        });
+
+        $('#kecamatan').on('select2:clear', function(e) {
+            $("#kelurahan").select2();
+        });
+    });
+</script>
+
+@endpush

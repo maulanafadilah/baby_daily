@@ -16,8 +16,8 @@
     <link rel="manifest" href="__manifest.json">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="assets/css/custom-style.css">
+    <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @yield('extention')
     @yield('style')
 
@@ -87,6 +87,9 @@
     <!-- ============== Js Files ==============  -->
     <!-- Bootstrap -->
     <!-- yield('script') -->
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script src="{{ URL::asset('assets/js/lib/bootstrap.min.js') }}"></script>
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -96,6 +99,10 @@
     <script src="{{ URL::asset('assets/js/plugins/progressbar-js/progressbar.min.js') }}"></script>
     <!-- Base Js File -->
     <script src="{{ URL::asset('assets/js/base.js') }}"></script>
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @stack('javascript-internal')
+
 
     <script type="text/javascript">
         CKEDITOR.replace('deskripsi');

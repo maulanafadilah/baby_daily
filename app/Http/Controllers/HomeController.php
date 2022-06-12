@@ -9,21 +9,18 @@ class HomeController extends Controller
     public function index()
     {
         // Global
-        $page_title = 'Beranda';
-        $page_description = "Beranda Baby Daily";
+        $page_title = 'Login';
+        $page_description = "Halaman Login";
         $action = __FUNCTION__;
 
         // Component
-        $header = 'default';
+        $header = false;
         $search = false;
         $extraHeader = false;
-        $footer = true;
-        // if (auth()->user()->id_peranan == 5) {
-        // }
-        $bottom = true;
+        $footer = false;
+        $bottom = false;
         $sidebar = false;
-
-        return view('welcome', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
+        return view('mbb/login', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
 
     public function keranjang()
