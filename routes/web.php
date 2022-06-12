@@ -28,11 +28,9 @@ use Illuminate\Support\Facades\Auth;
 /*--------------------------------BOTH LOGGED AND UNLOGGED---------------------------- */
 
 // HOME
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/', 'App\Http\Controllers\Parent\MitraController@index')->name('home');
 
-// MITRA
-Route::get('/mitra/ppkm', 'App\Http\Controllers\Parent\MitraController@index');
-Route::get('/mitra/ppkm/umkm', 'App\Http\Controllers\parent\MitraController@mitra_umkm');
+Route::get('/umkm', 'App\Http\Controllers\parent\MitraController@mitra_umkm');
 
 // STORE
 Route::resource('/store', SellerController::class);
@@ -52,10 +50,6 @@ Route::resource('/category', CategoryController::class);
 
 /*------------------------------------------------------------------------------------- */
 
-Route::domain('ppkm.'. env('APP_URL'))->group(function () {
-    Route::get('/', 'App\Http\Controllers\Parent\MitraController@index');
-});
-
 
 Route::controller(AuthController::class)->group(function () {
     
@@ -70,8 +64,6 @@ Route::controller(AuthController::class)->group(function () {
     });
 
     Route::middleware('auth')->group(function () {
-        // Route::get('edit_account', 'edit_account')->name('edit_account');
-        // Route::put('update_account', 'update_account')->name('update_account');
         Route::put('update_question', 'update_question')->name('update_question');
     });
 });
@@ -82,10 +74,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/store_question', 'App\Http\Controllers\AuthController@store')->name('store_question');
 
-    Route::middleware('admin')->group(function () {
-        // 
-    });
-
     Route::middleware('user')->group(function () {
         // Wishlist
         Route::resource('/wishlist', WishlistController::class)->middleware('auth');
@@ -95,16 +83,5 @@ Route::middleware('auth')->group(function () {
 
         // Profile
         Route::resource('/profile', ProfileController::class)->middleware('auth');
-
-        // Cart
-        Route::resource('/cart', CartController::class);
-        
-        // KMS
-        // Route::get('/kms', 'App\Http\Controllers\HomeController@kms');
-        // Route::get('/kms_show', 'App\Http\Controllers\HomeController@kms_show');
-    });
-
-    Route::middleware('seller')->group(function () {
-        // 
     });
 });

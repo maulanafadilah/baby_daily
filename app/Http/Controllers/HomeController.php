@@ -75,89 +75,6 @@ class HomeController extends Controller
                         'seller',
                         'profile_pic'));
     }
-    public function rolehandler(){
-        // Global
-        $page_title = 'Error';
-        $page_description = "Halaman Error";
-		$action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = false;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = false;
-
-        
-
-        return view('roleHandler', 
-                    compact(
-                            'page_title',
-                            'page_description', 
-                            'action', 
-                            'header', 
-                            'search', 
-                            'extraHeader', 
-                            'footer', 
-                            'bottom', 
-                            'sidebar',
-                        ));
-    }
-
-    public function keranjang()
-    {
-        // Global
-        $page_title = 'Keranjang';
-        $page_description = "Keranjang Belanja";
-        $action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = false;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = false;
-
-        return view('parent/shop/cart', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
-    }
-
-    public function kms()
-    {
-        // Global
-        $page_title = 'KMS Digital';
-        $page_description = "Beranda KMS Digital";
-        $action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = true;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = true;
-        $sidebar = true;
-
-        return view('parent/kms/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
-    }
-
-    public function kms_show()
-    {
-        // Global
-        $page_title = 'Detail KMS';
-        $page_description = "Detail Informasi KMS Anak";
-        $action = __FUNCTION__;
-
-        // Component
-        $header = false;
-        $search = true;
-        $extraHeader = false;
-        $footer = false;
-        $bottom = false;
-        $sidebar = false;
-
-        return view('parent/kms/show', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
-    }
 
     public function discovery()
     {
@@ -317,25 +234,6 @@ class HomeController extends Controller
                             'bottom', 
                             'sidebar',
                         ));
-    }
-
-    public function user()
-    {
-
-        // Global
-        $page_title = 'Beranda';
-        $page_description = "Beranda Baby Daily";
-        $action = __FUNCTION__;
-
-        // Component
-        $header = 'auth';
-        $search = false;
-        $extraHeader = false;
-        $footer = true;
-        $bottom = true;
-        $sidebar = true;
-
-        return view('parent/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar'));
     }
 
 }

@@ -28,9 +28,7 @@ class WishlistController extends Controller
         $bottom = false;
         $sidebar = false;
 
-        $wishlist = Wishlist::select('products.nama_produk', 'products.id', 'products.harga', 'wishlists.id as idw', 'productimages.gambar')->where('id_pengguna', auth()->user()->id)->join('products', 'wishlists.id_produk', '=', 'products.id')->join('productimages', 'wishlists.id_produk', '=', 'productimages.id_produk')->get();
-        // $wishlist_image = Wishlist::select('gambar')->where('id_pengguna', auth()->user()->id)->join('products', 'wishlists.id_produk', '=', 'products.id')->join('productimages', 'wishlists.id_produk', '=', 'productimages.id_produk')->first();
-        // return $wishlist;
+        $wishlist = Wishlist::select('products.nama_produk', 'products.id', 'products.harga', 'wishlists.id as idw', 'products.cover', 'sellers.tag')->where('wishlists.id_pengguna', auth()->user()->id)->where('sellers.tag', '2')->join('products', 'wishlists.id_produk', '=', 'products.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get();
 
         return view(
             'parent/shop/wishlist',

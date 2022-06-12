@@ -39,7 +39,7 @@ class MitraController extends Controller
         $products_pop = Product::select('*')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->join('productimages', 'products.id', '=', 'productimages.id')->where('sellers.tag', '2')->limit(5)->get();
         // return $products_pop;
 
-        return view('parent/shop/mitra/index', 
+        return view('parent/index', 
                     compact(
                             'page_title',
                             'page_description', 
@@ -74,12 +74,12 @@ class MitraController extends Controller
         $bottom = false;
         $sidebar = false;
 
-        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->get();
-        $seller_count = Seller::select('id')->get();
+        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->where('tag', '2')->get();
+        $seller_count = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->where('tag', '2')->count();
         // $seller2 = json_decode($seller, true);
         // return $seller_count;
 
-        return view('parent/shop/mitra/list', 
+        return view('parent/shop/list', 
                     compact(
                             'page_title',
                             'page_description', 

@@ -40,8 +40,10 @@ class ProductController extends Controller
 
         // SQL
         if(request('search')){
-            $result = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->get();
-            $count = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->count();
+            $result = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->where('sellers.tag', '2')->get();
+            $count = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->where('sellers.tag', '2')->count();
+        } else{
+            return back();
         }
         
         return view('parent/shop/search', 
@@ -112,8 +114,6 @@ class ProductController extends Controller
         } else{
             $wishlist = false;
         }
-        // $tag_json = json_encode($seller_tag);
-        // return $product_detail;
 
         return view('parent/shop/product', 
                     compact(

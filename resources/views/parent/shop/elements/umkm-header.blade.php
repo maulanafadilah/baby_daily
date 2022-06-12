@@ -1,6 +1,6 @@
     <div class="appHeader">
         <div class="left">
-        <a href="/mitra/ppkm" class="headerButton goBack text-primary">
+        <a href="/" class="headerButton goBack text-primary">
                 <ion-icon name="chevron-back-outline"></ion-icon>
         </a>
         </div>

@@ -1,5 +1,5 @@
             <div class="appBottomMenu">
-            <a href="{{ url('/mitra') }}" class="item {{ (request()->is('mitra*')) ? 'active' : '' }}">
+            <a href="{{ url('/') }}" class="item {{ (request()->is('/')) ? 'active' : '' }}">
                     <div class="col">
                         <ion-icon name="bag-check-outline"></ion-icon>
                         <strong>Beranda</strong>
@@ -11,10 +11,4 @@
                         <strong>Favorite</strong>
                     </div>
                 </a>
-                <!-- <a href="{{ url('/account') }}" class="item {{ (request()->is('account*')) ? 'active' : '' }}">
-                    <div class="col">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <strong>Akun</strong>
-                    </div>
-                </a> -->
             </div>

@@ -1,6 +1,6 @@
     <div class="appHeader scrolled">
         <div class="left">
-            <a href="{{ url('/') }}" class="headerButton goBack text-primary">
+            <a href="{{ url('https://babydaily.id') }}" class="headerButton goBack text-primary">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>

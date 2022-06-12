@@ -15,8 +15,8 @@
             </form>
         </div>
         <div class="right ">
-            <a href="/keranjang" class="headerButton">
-                <ion-icon name="cart-outline" class="text-primary"></ion-icon>
+            <a href="/wishlist" class="headerButton">
+                <ion-icon name="heart-outline" class="text-primary"></ion-icon>
             </a>
         </div>
     </div>

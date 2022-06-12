@@ -62,7 +62,6 @@
                         <div class="current-price">Rp{{$item->harga}}</div>
                     </div>
                     <!-- * price -->
-                    @if($seller_tag->tag == '1')
                         <div class="amount">
                             @auth
                                 @if($wishlist == false)
@@ -94,24 +93,7 @@
                                     <ion-icon name="heart-outline" class="text-secondary"></ion-icon>
                                 </button>
                             @endguest
-                        </div>
-                    @elseif($seller_tag->tag == '2')
-                        <div class="amount">
-                                <button class="btn btn-outline-secondary btn-icon">
-                                    <ion-icon name="share-social-outline"></ion-icon>
-                                    <!-- <label for="">Bagikan</label> -->
-                                </button>
-                        </div>
-                    @endif
-                    <!-- amount -->
-                    <!-- <div class="amount">
-                        <div class="stepper stepper-secondary">
-                            <a href="#" class="stepper-button stepper-down">-</a>
-                            <input type="text" class="form-control" value="1" disabled />
-                            <a href="#" class="stepper-button stepper-up">+</a>
-                        </div>
-                    </div> -->
-                    <!-- * amount -->
+                        </div>                 
                 </div>
             </div>
         </div>
@@ -280,6 +262,41 @@
 
         </div>
 
+        <!-- Share Action Sheet -->
+        <div class="offcanvas offcanvas-bottom action-sheet inset" tabindex="-1" id="actionSheetShare">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Belanja</h5>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="action-button-list">
+                    <li>
+                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                            <span>
+                                <img src="{{asset('img/banner/tokopedia.png')}}" alt="tokopedia" class="imaged w24 me-2">
+                                Tokopedia
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                            <span>
+                            <img src="{{asset('img/banner/shopee.png')}}" alt="shopee" class="imaged w24 me-2">
+                                Shopee
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                            <span>
+                            <img src="{{asset('img/banner/bukalapak.png')}}" alt="bukalapak" class="imaged w24 me-2">
+                                Bukalapak
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- * Share Action Sheet -->
 
         @if($seller_tag->tag == '1')
             @include('parent.shop.elements.product-bottom')

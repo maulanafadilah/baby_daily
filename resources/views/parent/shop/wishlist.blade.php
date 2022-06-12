@@ -5,15 +5,16 @@
 {{-- Content --}}
 @section('content')
 
-@include('parent.shop.elements.header-back')
+@include('parent.shop.elements.header-wishlist')
+@include('parent.shop.elements.mitra-bottom')
 @include('parent.shop.elements.umkm-search')
 
 <div class="section mt-3">
             @foreach($wishlist as $item)
                 <div class="card cart-item mb-2">
                     <div class="card-body" id="myUL">
-                        <div class="in">
-                            <img src="img/products/{{$item->gambar}}" alt="product" class="imaged">
+                        <div class="in" onclick="window.location.href='/product/{{$item->id}}'">
+                            <img src="img/products/{{$item->cover}}" alt="product" class="imaged">
                             <div class="text">
                                 <h3 class="title">{{$item->nama_produk}}</h3>
                                 <strong class="price">Rp{{$item->harga}}</strong>
