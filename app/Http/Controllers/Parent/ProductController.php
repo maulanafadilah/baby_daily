@@ -42,6 +42,8 @@ class ProductController extends Controller
         if(request('search')){
             $result = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->get();
             $count = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('nama_produk', 'like', '%'. request('search') . '%')->count();
+        }else{
+            return back();
         }
         
         return view('parent/shop/search', 

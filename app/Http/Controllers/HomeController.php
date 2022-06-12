@@ -29,15 +29,15 @@ class HomeController extends Controller
                 $nomor_telepon = auth()->user()->nomor_telepon;
                 $f_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get();
                 if($f_pic == '[]'){
-                    $profile_pic = false;
+                    $biodata = false;
                 } else{
-                    $profile_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
+                    $biodata = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
                 }
             }
         } else{
             $header = 'default';
             $sidebar = false;
-            $profile_pic = false;
+            $biodata = false;
         }
         $search = false;
         $extraHeader = false;
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         $products_pop = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->limit(5)->get();
         
-        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->limit(5)->get();
+        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->where('tag', '2')->limit(5)->get();
         
         $products_all = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->paginate(8);
         
@@ -73,7 +73,7 @@ class HomeController extends Controller
                         'products_all',
                         'products_pop',
                         'seller',
-                        'profile_pic'));
+                        'biodata'));
     }
     public function rolehandler(){
         // Global

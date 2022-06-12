@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Parent;
 
-use App\Http\Controllers\Controller;
-use App\Models\Eltern;
 use App\Models\User;
+use App\Models\Eltern;
+use Cloudinary\Asset\Image;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use Cloudinary\Transformation\Resize;
 
+use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\returnSelf;
+use App\Http\Controllers\CloudinaryStorage;
+use Cloudinary\Transformation\RoundCorners;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -264,8 +269,15 @@ class ProfileController extends Controller
      * @param  \App\Models\Parent  $parent
      * @return \Illuminate\Http\Response
      */
+
+    private const folder_path = 'profile';
+    public static function path($path){
+        return pathinfo($path, PATHINFO_FILENAME);
+    }
+    
     public function update(Request $request, $id)
     {        
+        
         switch($request){
             case ($request->nama_lengkap == true):
                 $validatedData = $request->validate([
@@ -313,11 +325,27 @@ class ProfileController extends Controller
                         'foto_orangtua' => 'required|image|file|max:10240',
                     ]);
 
+                    // if($request->oldImage){
+                    //     Storage::delete($request->oldImage);
+                    //     $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
+                    // }else{
+                    //     $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
+                    // }
+
+                    // $file = $validatedData['foto_orangtua'];
+                    
                     if($request->oldImage){
-                        Storage::delete($request->oldImage);
-                        $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
+
+                        $public_id = self::folder_path.'/'.self::path($request->oldImage);
+                        $del = cloudinary()->destroy($public_id);
+                        $result = $request->foto_orangtua->storeOnCloudinary('profile');
+                        $validatedData['foto_orangtua'] = $result->getFileName().".".$result->getExtension();
+                        // CloudinaryStorage::replace($file->getRealPath(), $file->getClientOriginalName(), $request->oldImage);
+                        // $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
                     }else{
-                        $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
+                        $result = $request->foto_orangtua->storeOnCloudinary('profile');
+                        $validatedData['foto_orangtua'] = $result->getFileName().".".$result->getExtension();
+                        // $result = CloudinaryStorage::upload($file->getRealPath(), $file->getClientOriginalName()); 
                     }
 
                     Eltern::where('id_pengguna', $id)

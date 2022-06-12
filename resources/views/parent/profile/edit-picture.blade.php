@@ -11,9 +11,9 @@
                 <form class="mt-2" method="post" action="/profile/{{auth()->user()->id}}" enctype="multipart/form-data">
                     @method('put')
                     @csrf
-                    <label for="fileUpload1" class="mt-1">Foto Profile</label>
+                        <label for="fileUpload1" class="mt-1">Foto Profile</label>
                     @if($biodata->foto_orangtua == true)
-                    <input type="hidden" name="oldImage" value="{{$biodata->foto_orangtua}}">
+                        <input type="hidden" name="oldImage" value="{{$biodata->foto_orangtua}}">
                     @endif
 
                     <div class="custom-file-upload" id="fileUpload1">

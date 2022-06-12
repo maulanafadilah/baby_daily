@@ -91,9 +91,9 @@ class AccountController extends Controller
        $nomor_telepon = auth()->user()->nomor_telepon;
        $f_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get();
        if($f_pic == '[]'){
-           $profile_pic = false;
+           $biodata = false;
        } else{
-           $profile_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
+           $biodata = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
        }
 
        return view('parent/account/show', 
@@ -107,7 +107,7 @@ class AccountController extends Controller
                            'footer', 
                            'bottom', 
                            'sidebar',
-                           'profile_pic'
+                           'biodata'
                        ));
     }
 

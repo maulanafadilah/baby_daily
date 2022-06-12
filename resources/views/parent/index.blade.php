@@ -398,25 +398,13 @@
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle me-1 mb-1 mt-1 btn-block" type="button" data-bs-toggle="dropdown">
                                     Terbaru
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Copy</a>
-                                    <a class="dropdown-item" href="#">Save</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="dropdown">
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle me-1 mb-1 mt-1 btn-block" type="button" data-bs-toggle="dropdown">
-                                    Etalalse
+                                    Populer
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Copy</a>
-                                    <a class="dropdown-item" href="#">Save</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
                             </div>
                         </div>
                     </div>

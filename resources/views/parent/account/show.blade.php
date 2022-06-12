@@ -25,8 +25,8 @@
 
         <div class="section mt-3">
             <div class="avatar" style="text-align:center">
-                @if($profile_pic == true)
-                <img src="{{asset('storage/'.$profile_pic->foto_orangtua)}}" alt="avatar" class="imaged w64 rounded">
+                @if($biodata == true)
+                <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$biodata->foto_orangtua}}" alt="foto_profile">
                 @else
                 <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="avatar" class="imaged w64 rounded">
                 @endif
