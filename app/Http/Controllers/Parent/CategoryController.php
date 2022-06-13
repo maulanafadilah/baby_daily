@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $bottom = false;
         $sidebar = false;
 
-        $product_list = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->where('categories.slug', $id)->where('sellers.tag', '2')->join('categories', 'products.id_kategori', '=', 'categories.id')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get();
+        $product_list = Product::select('products.nama_produk', 'products.id', 'products.cover', 'sellers.tag', 'products.harga')->where('categories.slug', $id)->where('sellers.tag', '2')->join('categories', 'products.id_kategori', '=', 'categories.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get();
 
         return view('parent/shop/category', 
                     compact(

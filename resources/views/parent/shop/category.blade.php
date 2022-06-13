@@ -65,7 +65,7 @@
                             <li class="splide__slide">
                                 <div class="card product-card" onclick="window.location.href='/product/{{$item->id}}'">
                                     <div class="card-body">
-                                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                                         <h2 class="title" onclick="window.location.href='/product/{{$item->id}}'">{{$item->nama_produk}}</h2>
                                         <div class="price mt-1" onclick="window.location.href='/product/{{$item->id}}'">Rp{{$item->harga}}</div>
                                         <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
