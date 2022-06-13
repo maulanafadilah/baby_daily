@@ -75,7 +75,7 @@ class WishlistController extends Controller
         
         Wishlist::create($validatedData + ['id_pengguna' => auth()->user()->id]);
 
-        return back()->with('success', 'Berhasil Menambahkan ke Keranjang');
+        return back()->with('success', 'Berhasil Menambahkan ke Favorit');
     }
 
     /**

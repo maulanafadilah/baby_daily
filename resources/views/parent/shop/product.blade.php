@@ -34,7 +34,7 @@
                 <ul class="splide__list">
                     @foreach($productimage as $item)
                     <li class="splide__slide">
-                        <img src="{{ asset('img/products/'.$item->gambar) }}" alt="alt" class="imaged w-100 square">
+                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/h_400,ar_1:1,c_fill,g_auto/{{$item->gambar}}" alt="imaged">
                     </li>
                     @endforeach
                 </ul>
@@ -102,11 +102,11 @@
             <div class="wide-block pt-2 pb-2">
                 <div class="profile-head">
                     <div class="avatar">
-                        <img src="{{ asset('img/profile/'.$item->foto_penjual) }}" alt="avatar" class="imaged w64 rounded">
+                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
                     </div>
                     <div class="in">
                         <a href="/store/{{$item->id_penjual}}"><h3 class="name">{{$item->nama_toko}}</h3></a>
-                        <h5 class="subtext">{{$item->kabupaten}}</h5>
+                        <!-- <h5 class="subtext">{{$item->kabupaten}}</h5> -->
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                 </li>
             </ul>
             <div class="wide-block pt-2 pb-2">
-            {{$item->deskripsi}}
+            {!!$item->deskripsi!!}
             </div>
 
         </div>
@@ -245,9 +245,9 @@
                     <ul class="splide__list">
                         @foreach($product_related as $item)
                             <li class="splide__slide">
-                                <div class="card product-card">
+                                <div class="card product-card" onclick="window.location.href='/product/{{$item->id_produk}}'">
                                     <div class="card-body">
-                                        <img src="{{ asset('img/products/'.$item->gambar) }}" class="image" alt="product image"  onclick="window.location.href='/product/{{$item->id_produk}}'">
+                                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                                         <h2 class="title" onclick="window.location.href='/product/{{$item->id_produk}}'">{{$item->nama_produk}}</h2>
                                         <div class="price mt-1" onclick="window.location.href='/product/{{$item->id_produk}}'">Rp{{$item->harga}}</div>
                                         <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
@@ -268,32 +268,38 @@
                 <h5 class="offcanvas-title">Belanja</h5>
             </div>
             <div class="offcanvas-body">
+            @foreach($product_detail as $item)
                 <ul class="action-button-list">
+                    
                     <li>
-                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                        <a href="{{$item->link_tokped}}" class="btn btn-list" data-bs-dismiss="offcanvas">
                             <span>
                                 <img src="{{asset('img/banner/tokopedia.png')}}" alt="tokopedia" class="imaged w24 me-2">
                                 Tokopedia
                             </span>
                         </a>
                     </li>
+                   
                     <li>
-                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                        <a href="{{$item->link_shopee}}" class="btn btn-list" data-bs-dismiss="offcanvas">
                             <span>
                             <img src="{{asset('img/banner/shopee.png')}}" alt="shopee" class="imaged w24 me-2">
                                 Shopee
                             </span>
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                        <a href="{{$item->link_buka}}" class="btn btn-list" data-bs-dismiss="offcanvas">
                             <span>
                             <img src="{{asset('img/banner/bukalapak.png')}}" alt="bukalapak" class="imaged w24 me-2">
                                 Bukalapak
                             </span>
                         </a>
                     </li>
+                   
                 </ul>
+            @endforeach
             </div>
         </div>
         <!-- * Share Action Sheet -->

@@ -29,14 +29,15 @@ class MitraController extends Controller
         $sidebar = false;
 
         // SQL
-        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->where('tag', 2)->limit(5)->get();
+        $seller = Seller::select('id', 'nama_toko', 'foto_penjual')->where('tag', 2)->limit(5)->get();
         // $seller_new = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->orderBy('id', 'DESC')->limit(2)->get();
         $category = Categorie::select('nama_kategori', 'slug', 'icon')->orderBy('id', 'ASC')->limit(3)->get();
         $category_all = Categorie::select('nama_kategori', 'slug', 'icon')->orderBy('id', 'ASC')->get();
-        $products_all = Product::select('products.nama_produk', 'products.id', 'productimages.gambar', 'sellers.tag', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('sellers.tag', '2')->paginate(8);
+        $products_all = Product::select('products.nama_produk', 'products.id', 'products.cover', 'sellers.tag', 'products.harga')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('sellers.tag', '2')->paginate(8);
         
+        // return $products_all;
 
-        $products_pop = Product::select('*')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->join('productimages', 'products.id', '=', 'productimages.id')->where('sellers.tag', '2')->limit(5)->get();
+        $products_pop = Product::select('products.nama_produk', 'products.id', 'products.cover', 'sellers.tag', 'products.harga')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->where('sellers.tag', '2')->limit(5)->get();
         // return $products_pop;
 
         return view('parent/index', 

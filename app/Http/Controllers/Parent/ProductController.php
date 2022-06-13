@@ -107,6 +107,7 @@ class ProductController extends Controller
         $product_related = Product::select('*')->join('productimages', 'products.id', '=', 'productimages.id')->limit(5)->get();
         $productimage = Productimage::select('*')->where('id_produk', $id)->get();
 
+        // return $product_detail;
         $seller_tag = Product::select('sellers.tag')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->first();
 
         if(Auth::check()){

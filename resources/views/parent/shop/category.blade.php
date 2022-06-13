@@ -63,11 +63,11 @@
                         <ul class="splide__list">
                             @foreach ($product_list as $item)
                             <li class="splide__slide">
-                                <div class="card product-card">
+                                <div class="card product-card" onclick="window.location.href='/product/{{$item->id}}'">
                                     <div class="card-body">
-                                        <img src="{{ asset('img/products/'.$item->gambar) }}" class="image" alt="product image"  onclick="window.location.href='/product/{{$item->id_produk}}'">
-                                        <h2 class="title" onclick="window.location.href='/product/{{$item->id_produk}}'">{{$item->nama_produk}}</h2>
-                                        <div class="price mt-1" onclick="window.location.href='/product/{{$item->id_produk}}'">Rp{{$item->harga}}</div>
+                                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
+                                        <h2 class="title" onclick="window.location.href='/product/{{$item->id}}'">{{$item->nama_produk}}</h2>
+                                        <div class="price mt-1" onclick="window.location.href='/product/{{$item->id}}'">Rp{{$item->harga}}</div>
                                         <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                                     </div>
                                 </div>
@@ -94,25 +94,13 @@
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle me-1 mb-1 mt-1 btn-block" type="button" data-bs-toggle="dropdown">
                                     Terbaru
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Copy</a>
-                                    <a class="dropdown-item" href="#">Save</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="dropdown">
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle me-1 mb-1 mt-1 btn-block" type="button" data-bs-toggle="dropdown">
-                                    Etalalse
+                                    Populer
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Copy</a>
-                                    <a class="dropdown-item" href="#">Save</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,11 +112,11 @@
             <div class="row mt-2">
                 @foreach ($product_list as $item)
                 <div class="col-6 mt-2">
-                    <div class="card product-card">
+                    <div class="card product-card" onclick="window.location.href='/product/{{$item->id}}'">
                         <div class="card-body">
-                            <img src="{{ asset('img/products/'.$item->gambar) }}" class="image" alt="product image" onclick="window.location.href='/product/{{$item->id_produk}}'">
-                            <h2 class="title" onclick="window.location.href='/product'">{{$item->nama_produk}}</h2>
-                            <div class="price mt-1" onclick="window.location.href='/product'">Rp{{$item->harga}}</div>
+                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
+                            <h2 class="title">{{$item->nama_produk}}</h2>
+                            <div class="price mt-1">Rp{{$item->harga}}</div>
                             <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
                 <div class="card cart-item mb-2">
                     <div class="card-body" id="myUL">
                         <div class="in" onclick="window.location.href='/product/{{$item->id}}'">
-                            <img src="img/products/{{$item->cover}}" alt="product" class="imaged">
+                            <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,ar_1:1,c_fill,g_auto/{{$item->cover}}" alt="image" class="imaged w64">
                             <div class="text">
                                 <h3 class="title">{{$item->nama_produk}}</h3>
                                 <strong class="price">Rp{{$item->harga}}</strong>

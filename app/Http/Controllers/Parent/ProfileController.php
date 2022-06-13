@@ -264,7 +264,7 @@ class ProfileController extends Controller
      * @param  \App\Models\Parent  $parent
      * @return \Illuminate\Http\Response
      */
-    private const folder_path = 'profile';
+    private const folder_path = 'profiles';
     public static function path($path){
         return pathinfo($path, PATHINFO_FILENAME);
     }
@@ -329,12 +329,12 @@ class ProfileController extends Controller
 
                         $public_id = self::folder_path.'/'.self::path($request->oldImage);
                         $del = cloudinary()->destroy($public_id);
-                        $result = $request->foto_orangtua->storeOnCloudinary('profile',  [ "quality" => "50"]);
+                        $result = $request->foto_orangtua->storeOnCloudinary('profiles');
                         $validatedData['foto_orangtua'] = $result->getFileName().".".$result->getExtension();
                         // CloudinaryStorage::replace($file->getRealPath(), $file->getClientOriginalName(), $request->oldImage);
                         // $validatedData['foto_orangtua'] = $request->file('foto_orangtua')->store('profile');
                     }else{
-                        $result = $request->foto_orangtua->storeOnCloudinary('profile');
+                        $result = $request->foto_orangtua->storeOnCloudinary('profiles');
                         $validatedData['foto_orangtua'] = $result->getFileName().".".$result->getExtension();
                         // $result = CloudinaryStorage::upload($file->getRealPath(), $file->getClientOriginalName()); 
                     }

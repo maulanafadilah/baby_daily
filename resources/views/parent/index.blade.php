@@ -123,16 +123,16 @@
                             <li class="splide__slide d-flex justify-content-center">
                                 <div class="card product-card" style="background: transparent; box-shadow: none">
                                     <div class="card-body d-flex align-items-center">
-                                        <img src="{{asset('assets/img/sample/photo/800x1235.png')}}" alt="alt" class="image d-flex align-items-center" onclick="window.location.href='/promotion'">
+                                        <img src="{{asset('assets/img/sample/photo/800x1235.png')}}" alt="alt" class="image d-flex align-items-center" onclick="window.location.href='#'">
                                     </div>
                                 </div>
                             </li>
 
                             @foreach ($products_pop as $item)
                             <li class="splide__slide">
-                                <div class="card product-card">
+                                <div class="card product-card" onclick="window.location.href='/product/{{$item->id}}'">
                                     <div class="card-body">
-                                        <img src="{{asset('img/products/'.$item->gambar)}}" class="image" alt="product image"  onclick="window.location.href='/product/{{$item->id_produk}}'">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                                         <h2 class="title" onclick="window.location.href='/product/{{$item->id_produk}}'">{{$item->nama_produk}}</h2>
                                         <div class="price mt-1" onclick="window.location.href='/product/{{$item->id_produk}}'">Rp{{$item->harga}}</div>
                                         <a href="#" class="btn btn-sm btn-primary btn-block">+ Favorite</a>
@@ -156,9 +156,9 @@
                         <ul class="splide__list">
                             @foreach ($products_pop as $item)
                             <li class="splide__slide">
-                                <div class="card product-card">
+                                <div class="card product-card" onclick="window.location.href='/product/{{$item->id}}'">
                                     <div class="card-body">
-                                        <img src="{{asset('img/products/'.$item->gambar)}}" class="image" alt="product image"  onclick="window.location.href='/product/{{$item->id_produk}}'">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                                         <h2 class="title" onclick="window.location.href='/product/{{$item->id_produk}}'">{{$item->nama_produk}}</h2>
                                         <div class="price mt-1" onclick="window.location.href='/product/{{$item->id_produk}}'">Rp{{$item->harga}}</div>
                                         <a href="#" class="btn btn-sm btn-primary btn-block">+ Favorite</a>
@@ -182,7 +182,7 @@
                             <li class="splide__slide" onclick="window.location.href='/store/{{$item->id}}'">
                                 <div class="card product-card" style="height: 130px;">
                                     <div class="card-body text-center">
-                                        <img src="{{asset('img/profile/'.$item->foto_penjual)}}" class="imaged rounded w64" alt="product image">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
                                         <h2 class="title">{{$item->nama_toko}}</h2>
                                     </div>
                                 </div>
@@ -226,8 +226,8 @@
                 @foreach ($products_all as $item)
                 <div class="col-6 mt-2" id="post-data">
                     <div class="card product-card">
-                        <div class="card-body">
-                            <img src="{{asset('img/products/'.$item->gambar)}}" class="image" alt="product image" onclick="window.location.href='/product/{{$item->id}}'">
+                        <div class="card-body" onclick="window.location.href='/product/{{$item->id}}'">
+                            <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                             <h2 class="title" onclick="window.location.href='/product/{{$item->id}}'">{{$item->nama_produk}}</h2>
                             <div class="price mt-1" onclick="window.location.href='/product/{{$item->id}}'">Rp{{$item->harga}}</div>
                             <form method="post" action="/wishlist/">
