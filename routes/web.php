@@ -10,6 +10,7 @@ use App\Http\Controllers\Parent\WishlistController;
 use App\Http\Controllers\Parent\AccountController;
 use App\Http\Controllers\Parent\ProfileController;
 use App\Http\Controllers\Parent\CategoryController;
+use App\Http\Controllers\Parent\MitraController;
 use App\Http\Controllers\Parent\CartController;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 // HOME
 Route::get('/', 'App\Http\Controllers\Parent\MitraController@index')->name('home');
 
-Route::get('/umkm', 'App\Http\Controllers\parent\MitraController@mitra_umkm');
+Route::get('/umkm', [MitraController::class, 'mitra_umkm'])->name('umkm');
 
 // STORE
 Route::resource('/store', SellerController::class);

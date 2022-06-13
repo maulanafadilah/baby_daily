@@ -12,7 +12,7 @@
             <li>
                 <a href="/store/{{$item->id}}" class="item">
                     <div class="imageWrapper">
-                        <img src="{{asset('img/profile/'.$item->foto_penjual)}}" alt="image" class="imaged w64">
+                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
                     </div>
                     <div class="in">
                         <div>

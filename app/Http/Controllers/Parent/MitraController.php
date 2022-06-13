@@ -75,8 +75,8 @@ class MitraController extends Controller
         $bottom = false;
         $sidebar = false;
 
-        $seller = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->where('tag', '2')->get();
-        $seller_count = Seller::select('id', 'nama_toko', 'kabupaten', 'foto_penjual')->where('tag', '2')->count();
+        $seller = Seller::select('id', 'nama_toko', 'foto_penjual')->where('tag', '2')->get();
+        $seller_count = Seller::select('id', 'nama_toko', 'foto_penjual')->where('tag', '2')->count();
         // $seller2 = json_decode($seller, true);
         // return $seller_count;
 
