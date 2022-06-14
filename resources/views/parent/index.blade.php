@@ -49,7 +49,7 @@
                 <div class="row">
                     @foreach ($category as $item)
                     <div class="col d-block text-center" onclick="window.location.href='/category/{{$item->slug}}'">
-                        <img src="{{asset('img/banner/'.$item->icon)}}" alt="" class="imaged w36">
+                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/{{$item->icon}}" alt="" class="imaged w36">
                         <h4 class="mt-1">{{$item->nama_kategori}}</h4>
                     </div>
                     @endforeach
@@ -74,16 +74,27 @@
 
                         <ul class="listview image-listview flush mb-2">
                             @foreach ($category_all as $item)
-                            <li>
-                                <div class="item" onclick="window.location.href='/category/{{$item->slug}}'">
-                                    <img src="{{asset('img/banner/'.$item->icon)}}" alt="image" class="image">
-                                    <div class="in">
-                                        <div>{{$item->nama_kategori}}</div>
+                                @if($item->icon == true)
+                                <li>
+                                    <div class="item" onclick="window.location.href='/category/{{$item->slug}}'">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/{{$item->icon}}" alt="image" class="image">
+                                        <div class="in">
+                                            <div>{{$item->nama_kategori}}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                                @else
+                                <li>
+                                    <div class="item" onclick="window.location.href='/category/{{$item->slug}}'">
+                                        <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="image" class="image">
+                                        <div class="in">
+                                            <div>{{$item->nama_kategori}}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                @endif
                             @endforeach
-                            
+                                
                         </ul>
 
 

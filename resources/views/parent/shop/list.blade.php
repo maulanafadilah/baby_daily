@@ -9,19 +9,35 @@
 
         <ul class="listview image-listview media mb-2" id="myUL">
             @foreach($seller as $item)
-            <li>
-                <a href="/store/{{$item->id}}" class="item">
-                    <div class="imageWrapper">
-                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
-                    </div>
-                    <div class="in">
-                        <div>
-                            {{$item->nama_toko}}
-                            <div class="text-muted">{{$item->kabupaten}}</div>
+                @if($item->foto_penjual == true)
+                <li>
+                    <a href="/store/{{$item->id}}" class="item">
+                        <div class="imageWrapper">
+                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
                         </div>
-                    </div>
-                </a>
-            </li>
+                        <div class="in">
+                            <div>
+                                {{$item->nama_toko}}
+                                <div class="text-muted">{{$item->kabupaten}}</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="/store/{{$item->id}}" class="item">
+                        <div class="imageWrapper">
+                        <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="foto_profile" class="imaged w64 square">
+                        </div>
+                        <div class="in">
+                            <div>
+                                {{$item->nama_toko}}
+                                <div class="text-muted">{{$item->kabupaten}}</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                @endif
             @endforeach
         </ul>
 
