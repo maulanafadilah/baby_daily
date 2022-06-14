@@ -3,8 +3,8 @@
             <!-- profile box -->
             <div class="profileBox">
                 <div class="image-wrapper">
-                @if($biodata == true)
-                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_48,c_fill,ar_1:1,g_auto,r_max/{{$biodata->foto_orangtua}}" alt="foto_profile">
+                @if($profile_pic == true)
+                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_48,c_fill,ar_1:1,g_auto,r_max/{{$profile_pic->foto_orangtua}}" alt="foto_profile">
                 @else
                     <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="image" class="imaged rounded">
                 @endif

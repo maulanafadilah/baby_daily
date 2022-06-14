@@ -35,17 +35,11 @@ class ProfileController extends Controller
        $nomor_telepon = auth()->user()->nomor_telepon;
 
        $biodata = Eltern::where('nomor_telepon', $nomor_telepon)->get();
-       $f_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get();
-                if($f_pic == '[]'){
-                    $profile_pic = false;
-                    $biodata = false;
-                } else{
-                    $profile_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
-                    // $biodata = true;
-                }
+       
     //    return $biodata;
 
-        if($biodata == null){
+        if($biodata == '[]'){
+            $profile_pic = false;
             return view('parent/profile/index', 
                    compact(
                            'page_title',
@@ -63,6 +57,14 @@ class ProfileController extends Controller
         }
         else{            
             // return $biodata;
+            $f_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->first();
+    //    return $f_pic;
+                if($f_pic->foto_orangtua == null){
+                    $profile_pic = false;
+                } else{
+                    $profile_pic = Eltern::select('foto_orangtua')->where('nomor_telepon', $nomor_telepon)->get()[0];
+                    // $biodata = true;
+                }
             $biodata = Eltern::where('nomor_telepon', $nomor_telepon)->get()[0];
             return view('parent/profile/show', 
                    compact(
