@@ -107,13 +107,13 @@ class ProductController extends Controller
         $product_related = Product::select('products.nama_produk', 'products.id', 'products.cover', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->limit(5)->get();
         $productimage = Productimage::select('*')->where('id_produk', $id)->get();
 
-        $seller_tag = Product::select('sellers.tag', 'sellers.link_whatsapp')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get()[0];
+        $seller_tag = Product::select('sellers.tag')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get()[0];
         // $link_wa = Product::select('sellers.link_whatsapp')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->first();
         // return $seller_tag;
 
-        $nomor_telepon = auth()->user()->nomor_telepon;
+        $nomor_telepon = Product::select('sellers.nomor_telepon')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->first();
         // $nomor_telepon = '082249380082';
-        $wa = explode('0', $nomor_telepon, 2)[1];
+        $wa = explode('0', $nomor_telepon->nomor_telepon, 2)[1];
 
         // return $wa;
         if(Auth::check()){
