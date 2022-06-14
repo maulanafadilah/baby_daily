@@ -123,7 +123,7 @@
                             <li class="splide__slide d-flex justify-content-center">
                                 <div class="card product-card" style="background: transparent; box-shadow: none">
                                     <div class="card-body d-flex align-items-center">
-                                        <img src="{{asset('assets/img/sample/photo/800x1235.png')}}" alt="alt" class="image d-flex align-items-center" onclick="window.location.href='#'">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/v1655228406/banners/2_ei1ly2.png" alt="alt" class="image d-flex align-items-center">
                                     </div>
                                 </div>
                             </li>
@@ -230,7 +230,7 @@
                             <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                             <h2 class="title" onclick="window.location.href='/product/{{$item->id}}'">{{$item->nama_produk}}</h2>
                             <div class="price mt-1" onclick="window.location.href='/product/{{$item->id}}'">Rp{{$item->harga}}</div>
-                            <form method="post" action="/wishlist/">
+                            <form method="post" action="{{ url('/wishlist/') }}">
                                 @csrf
                                 <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
                                 <input type="hidden" name="id_produk" value="{{$item->id}}">

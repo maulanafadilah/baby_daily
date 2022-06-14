@@ -61,7 +61,10 @@ class CategoryController extends Controller
         $bottom = false;
         $sidebar = false;
 
-        $product_list = Product::select('products.nama_produk', 'products.id', 'products.cover', 'sellers.tag', 'products.harga')->where('categories.slug', $id)->where('sellers.tag', '2')->join('categories', 'products.id_kategori', '=', 'categories.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->get();
+        $product_list = Product::select('products.nama_produk', 'products.id', 'products.cover', 'sellers.tag', 'products.harga')->where('categories.slug', $id)->where('sellers.tag', '2')->join('categories', 'products.id_kategori', '=', 'categories.id')->join('sellers', 'products.id_penjual', '=', 'sellers.id')->paginate(8);
+        $banner = Categorie::select('banner')->where('slug', $id)->get();
+
+        // return $banner;
 
         return view('parent/shop/category', 
                     compact(
@@ -74,7 +77,8 @@ class CategoryController extends Controller
                             'footer', 
                             'bottom', 
                             'sidebar',
-                            'product_list'
+                            'product_list',
+                            'banner'
                         ));
     }
 

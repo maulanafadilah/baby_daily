@@ -13,7 +13,7 @@
                     <h4 class="alert-title"><span><ion-icon name="information-circle-outline"></ion-icon></span> Informasi</h4>
                     Nomor NIK dan Nomor KK diperlukan untuk mencocokan data dengan No KK anak di Posyandu
                 </div>
-                <form class="needs-validation mt-2" method="post" action="/profile/">
+                <form class="needs-validation mt-2" method="post" action="{{ url('/profile/') }}">
                     @csrf
                     
                     <div class="form-group boxed">

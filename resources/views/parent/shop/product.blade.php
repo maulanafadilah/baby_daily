@@ -69,7 +69,7 @@
                                     <form method="post" action="{{ url('/wishlist/') }}">
                                         @csrf
                                         <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
-                                        <input type="hidden" name="id_produk" value="{{$item->id}}">
+                                        <input type="hidden" name="id_produk" value="{{$item->id_produk}}">
 
                                         <button type="submit" class="btn btn-outline-secondary btn-icon">
                                         <ion-icon name="heart-outline" class="text-secondary"></ion-icon></ion-icon>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="in">
                         <a href="/store/{{$item->id_penjual}}"><h3 class="name">{{$item->nama_toko}}</h3></a>
-                        <!-- <h5 class="subtext">{{$item->kabupaten}}</h5> -->
+                        <!-- <h5 class="subtext"></h5> -->
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                         Kategori
                     </div>
                     <div class="col">
-                    {{$item->id_kategori}}
+                    {{$item->nama_kategori}}
                     </div>
                 </li>
                 <li>
@@ -245,12 +245,17 @@
                     <ul class="splide__list">
                         @foreach($product_related as $item)
                             <li class="splide__slide">
-                                <div class="card product-card" onclick="window.location.href='/product/{{$item->id_produk}}'">
+                                <div class="card product-card" onclick="window.location.href='/product/{{$item->id}}'">
                                     <div class="card-body">
-                                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
                                         <h2 class="title" onclick="window.location.href='/product/{{$item->id_produk}}'">{{$item->nama_produk}}</h2>
                                         <div class="price mt-1" onclick="window.location.href='/product/{{$item->id_produk}}'">Rp{{$item->harga}}</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
+                                        <form method="post" action="{{ url('/wishlist/') }}">
+                                            @csrf
+                                            <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
+                                            <input type="hidden" name="id_produk" value="{{$item->id}}">
+                                            <button type="submit" class="btn btn-sm btn-primary btn-block">+ Favorite</button>
+                                        </form>
                                     </div>
                                 </div>
                             </li>
@@ -272,7 +277,7 @@
                 <ul class="action-button-list">
                     
                     <li>
-                        <a href="{{$item->link_tokped}}" class="btn btn-list" data-bs-dismiss="offcanvas">
+                        <a target="_blank" href="{{$item->link_tokped}}" class="btn btn-list">
                             <span>
                                 <img src="{{asset('img/banner/tokopedia.png')}}" alt="tokopedia" class="imaged w24 me-2">
                                 Tokopedia
@@ -281,7 +286,7 @@
                     </li>
                    
                     <li>
-                        <a href="{{$item->link_shopee}}" class="btn btn-list" data-bs-dismiss="offcanvas">
+                        <a target="_blank" href="{{$item->link_shopee}}" class="btn btn-list">
                             <span>
                             <img src="{{asset('img/banner/shopee.png')}}" alt="shopee" class="imaged w24 me-2">
                                 Shopee
@@ -290,7 +295,7 @@
                     </li>
                     
                     <li>
-                        <a href="{{$item->link_buka}}" class="btn btn-list" data-bs-dismiss="offcanvas">
+                        <a target="_blank" href="{{$item->link_buka}}" class="btn btn-list">
                             <span>
                             <img src="{{asset('img/banner/bukalapak.png')}}" alt="bukalapak" class="imaged w24 me-2">
                                 Bukalapak

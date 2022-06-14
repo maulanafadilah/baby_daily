@@ -30,7 +30,7 @@
                     </div>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="shield-checkmark-outline"></ion-icon>
@@ -39,7 +39,7 @@
                         Pertanyaan Keamanan
                     </div>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a href="/account/4/edit" class="item">
                     <div class="icon-box bg-primary">
@@ -62,7 +62,7 @@
                     <div class="icon-box bg-danger">
                         <ion-icon name="exit-outline"></ion-icon>
                     </div>
-                    <div class="in">
+                    <div class="in text-dark">
                         Keluar Akun
                     </div>
                     <div>
