@@ -103,7 +103,7 @@ class ProductController extends Controller
         $sidebar = false;
 
         // SQL
-        $product_detail = Product::select('products.nama_produk', 'products.stok', 'products.harga', 'products.id as id_produk', 'products.brand', 'products.deskripsi','sellers.id as id_penjual', 'sellers.nama_toko', 'categories.nama_kategori', 'sellers.foto_penjual', 'products.link_tokped', 'products.link_buka', 'products.link_shopee')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->join('categories', 'products.id_kategori', '=', 'categories.id')->get();
+        $product_detail = Product::select('products.nama_produk', 'products.stok', 'products.harga', 'products.id as id_produk', 'products.brand', 'products.deskripsi','sellers.id as id_penjual', 'sellers.nama_toko', 'categories.nama_kategori', 'sellers.foto_penjual', 'products.link_tokped', 'products.link_buka', 'products.link_shopee', 'regencies.name as kabupaten')->where('products.id', $id)->join('sellers', 'products.id_penjual', '=', 'sellers.id')->join('categories', 'products.id_kategori', '=', 'categories.id')->join('regencies', 'sellers.regency_id', '=', 'regencies.id')->get();
         $product_related = Product::select('products.nama_produk', 'products.id', 'products.cover', 'products.harga')->join('productimages', 'products.id', '=', 'productimages.id')->limit(5)->get();
         $productimage = Productimage::select('*')->where('id_produk', $id)->get();
 

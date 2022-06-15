@@ -10,9 +10,15 @@
         @foreach($seller_detail as $item)
         <div class="section mt-2">
             <div class="profile-head">
+                @if($item->foto_penjual == true)
                 <div class="avatar">
                 <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
                 </div>
+                @else
+                <div class="avatar">
+                <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="foto_profile" class="imaged w64 rounded">
+                </div>
+                @endif
                 <div class="in">
                     <h3 class="name">{{$item->nama_toko}}</h3>
                     <h5 class="subtext">{{$item->kabupaten}}</h5>

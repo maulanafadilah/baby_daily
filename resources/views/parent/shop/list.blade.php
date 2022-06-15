@@ -27,7 +27,7 @@
                 <li>
                     <a href="/store/{{$item->id}}" class="item">
                         <div class="imageWrapper">
-                        <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="foto_profile" class="imaged w64 square">
+                        <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="foto_profile" class="imaged w64 rounded">
                         </div>
                         <div class="in">
                             <div>

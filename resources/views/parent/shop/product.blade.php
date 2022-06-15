@@ -101,12 +101,18 @@
         <div class="section full mt-2">
             <div class="wide-block pt-2 pb-2">
                 <div class="profile-head">
+                    @if($item->foto_penjual == true)
                     <div class="avatar">
                     <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_64,c_fill,ar_1:1,g_auto,r_max/{{$item->foto_penjual}}" alt="foto_profile">
                     </div>
+                    @else
+                    <div class="avatar">
+                    <img src="{{asset('assets/img/sample/avatar/avatar1.jpg')}}" alt="foto_profile" class="imaged w64 rounded">
+                    </div>
+                    @endif
                     <div class="in">
                         <a href="/store/{{$item->id_penjual}}"><h3 class="name">{{$item->nama_toko}}</h3></a>
-                        <!-- <h5 class="subtext"></h5> -->
+                        <h5 class="subtext">{{$item->kabupaten}}</h5>
                     </div>
                 </div>
             </div>
