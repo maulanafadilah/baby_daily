@@ -15,7 +15,7 @@
 
 <div class="login-form">
     <div class="section">
-        <img src="{{ URL::asset('assets/img/sample/photo/vector4.png') }}" alt="image" class="form-image">
+        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/v1655302471/banners/THG_M405_01_bv3e6y.png" alt="image" class="form-image">
     </div>
     <div class="section mt-1">
         <h1>Masuk</h1>
