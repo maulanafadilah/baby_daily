@@ -65,11 +65,11 @@ class SellerController extends Controller
 
         // SQL
         $seller_detail = Seller::select('sellers.nama_toko', 'regencies.name as kabupaten', 'sellers.jam_buka', 'sellers.jam_tutup', 'sellers.link_tokped', 'sellers.link_buka', 'sellers.link_shopee', 'sellers.foto_penjual')->where('sellers.id', $id)->join('regencies', 'sellers.regency_id', '=', 'regencies.id')->get();
-        $product_list = Product::select('*')->where('id_penjual', $id)->join('productimages', 'products.id', '=', 'productimages.id')->paginate(6);
+        $product_list = Product::select('products.nama_produk', 'products.id', 'products.cover', 'products.harga')->where('id_penjual', $id)->join('productimages', 'products.id', '=', 'productimages.id')->paginate(6);
         
+        // return $product_list;
         $nomor_telepon = Seller::select('nomor_telepon')->where('id', $id)->first();
         $wa = explode('0', $nomor_telepon->nomor_telepon, 2)[1];
-        // return $wa;
 
         return view('parent/shop/store', 
                     compact(

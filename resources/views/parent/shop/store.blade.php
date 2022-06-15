@@ -106,13 +106,18 @@
                         <div class="infinite-scroll">
                         <div class="row mt-2">
                             @foreach ($product_list as $item)
-                            <div class="col-6 mt-2">
+                            <div class="col-6 mt-2" id="post-data">
                                 <div class="card product-card">
-                                    <div class="card-body">
-                                    <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
-                                        <h2 class="title" onclick="window.location.href='/product'">{{$item->nama_produk}}</h2>
-                                        <div class="price mt-1" onclick="window.location.href='/product'">Rp{{$item->harga}}</div>
-                                        <a href="#" class="btn btn-sm btn-primary btn-block">+ Keranjang</a>
+                                    <div class="card-body" onclick="window.location.href='/product/{{$item->id}}'">
+                                        <img src="https://res.cloudinary.com/baby-daily-indonesia/image/upload/w_1000,ar_1:1,c_fill,g_auto/{{$item->cover}}" class="image" alt="{{$item->nama_produk}}">
+                                        <h2 class="title" onclick="window.location.href='/product/{{$item->id}}'">{{$item->nama_produk}}</h2>
+                                        <div class="price mt-1" onclick="window.location.href='/product/{{$item->id}}'">Rp{{$item->harga}}</div>
+                                        <form method="post" action="{{ url('/wishlist/') }}">
+                                            @csrf
+                                            <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
+                                            <input type="hidden" name="id_produk" value="{{$item->id}}">
+                                            <button type="submit" class="btn btn-sm btn-primary btn-block">+ Favorite</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

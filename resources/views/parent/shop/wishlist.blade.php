@@ -26,9 +26,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
                             </form>
-
-                            
-                            <a href="#" class="btn btn-outline-secondary btn-sm">+ Keranjang</a>
+                            <!-- <a href="#" class="btn btn-outline-secondary btn-sm">+ Keranjang</a> -->
                         </div>
                     </div>
                 </div>
