@@ -65,11 +65,8 @@
                 
             </div>
 
-            <div class="form-links text-center mt-2">
-                
-                <div><a href="/login-by-uid" class="text-muted">Login By UID</a></div>
-
-                
+            <div class="section-full mt-3">
+                <a href="/login/redirect" class="btn btn-outline-danger btn-block"><span><img src="img/uid.png" class="imaged w36 square mx-2" alt=""></span> Login Menggunakan U.ID</a>
             </div>
 
 

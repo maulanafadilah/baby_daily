@@ -17,8 +17,8 @@ class UIDLoginController extends Controller
     {
         $request->session()->put("state", $state=Str::random(40));
         $query = http_build_query([
-            "client_id" => "217",
-            "redirect_uri" => "http://127.0.0.1:8000/login/callback",
+            "client_id" => "216",
+            "redirect_uri" => "https://kms.babydaily.id/login/callback",
             "response_type" => "code",
             "scope" => "",
             "state" => $state
@@ -35,9 +35,9 @@ class UIDLoginController extends Controller
 
         $response = Http::asForm()->post("https://api-v2.u.id/api/oauth/token", [
             "grant_type" => "authorization_code",
-            "client_id" => "217",
-            "client_secret" => "5etVjYNz4ZpgAzrtYcKjYkIee4tmrwNqliUqOIkW",
-            "redirect_uri" => "http://127.0.0.1:8000/login/callback",
+            "client_id" => "216",
+            "client_secret" => "8HuLlrwYKHI1fR0uBtYhC4dEb903UEL7GJiBmVCy",
+            "redirect_uri" => "https://kms.babydaily.id/login/callback",
             "code" => $request->code
         ]);
 
