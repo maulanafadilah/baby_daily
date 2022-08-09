@@ -5,7 +5,7 @@
 {{-- Content --}}
 @section('content')
 
-@include('parent.shop.elements.header-back')
+@include('parent.account.elements.header-back')
 
         <div class="listview-title mt-2">Pengaturan Akun</div>
         <ul class="listview image-listview flush transparent">

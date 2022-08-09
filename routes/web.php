@@ -12,6 +12,9 @@ use App\Http\Controllers\Parent\ProfileController;
 use App\Http\Controllers\Parent\CategoryController;
 use App\Http\Controllers\Parent\MitraController;
 use App\Http\Controllers\Parent\CartController;
+use App\Http\Controllers\UIDLoginController;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -27,6 +30,12 @@ use Illuminate\Support\Facades\Auth;
 
 
 /*--------------------------------BOTH LOGGED AND UNLOGGED---------------------------- */
+Route::get('/login/redirect', [UIDLoginController::class, 'redirect']);
+Route::get('/login/callback', [UIDLoginController::class, 'callback']);
+
+// Route::get('/login/redirect', [UIDLoginController::class, 'redirectToUID']);
+// Route::get('/login/callback', [UIDLoginController::class, 'handleUIDCallback']);
+
 
 // HOME
 Route::get('/', 'App\Http\Controllers\Parent\MitraController@index')->name('home');
