@@ -12,6 +12,9 @@ use App\Http\Controllers\Parent\ProfileController;
 use App\Http\Controllers\Parent\CategoryController;
 use App\Http\Controllers\Parent\MitraController;
 use App\Http\Controllers\Parent\CartController;
+use App\Http\Controllers\parent\KmsController;
+use App\Http\Controllers\parent\BalitaController;
+use App\Http\Controllers\parent\KehadiranController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -75,14 +78,26 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/store_question', 'App\Http\Controllers\AuthController@store')->name('store_question');
 
+    
     Route::middleware('user')->group(function () {
         // Wishlist
         Route::resource('/wishlist', WishlistController::class)->middleware('auth');
-
+        
         // Account
         Route::resource('/account', AccountController::class)->middleware('auth');
-
+        
         // Profile
         Route::resource('/profile', ProfileController::class)->middleware('auth');
+
+        // KMS
+        Route::resource('/kms', KmsController::class)->middleware('auth');
+
+        // Balita
+        Route::resource('/balita', BalitaController::class)->middleware('auth');
+
+        // Kehadiran
+        Route::resource('/kehadiran', KehadiranController::class)->middleware('auth');
     });
 });
+
+Route::get('login-by-uid', 'App\Http\Controllers\Parent\MitraController@login_by_uid')->name('login_by_uid')->middleware('guest');

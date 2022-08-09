@@ -96,4 +96,8 @@ class MitraController extends Controller
                         ));
     }
 
+    public function login_by_uid(){
+        return redirect()->away('https://u.id/oauth/authorize?client_id=217&redirect_uri=https://127.0.0.1:8000/login/callback&response_type=code');
+    }
+
 }

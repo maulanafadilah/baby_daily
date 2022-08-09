@@ -1,7 +1,7 @@
 <div class="appHeader bg-primary text-light">
         <div class="left">
-            <a href="#" class="headerButton toggle-searchbox">
-                <ion-icon name="search-outline"></ion-icon>
+            <a href="{{ url('/balita/create') }}" class="headerButton">
+                <ion-icon name="add-circle-outline"></ion-icon>
             </a>
         </div>
         <div class="pageTitle">

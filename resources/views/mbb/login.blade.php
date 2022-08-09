@@ -61,13 +61,26 @@
                     <a href="/register">Daftar Sekarang</a>
                 </div>
                 <div><a href="/reset" class="text-muted">Lupa Kata Sandi?</a></div>
+
+                
             </div>
+
+            <div class="form-links text-center mt-2">
+                
+                <div><a href="/login-by-uid" class="text-muted">Login By UID</a></div>
+
+                
+            </div>
+
 
             <div class="form-button-group">
                 <button type="submit" class="btn btn-primary btn-block btn-lg">Masuk</button>
             </div>
-
         </form>
+
+        
+            
+        
     </div>
 </div>
 

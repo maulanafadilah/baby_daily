@@ -1,10 +1,5 @@
     <div class="appHeader scrolled">
-        <div class="left">
-            <a href="{{ url('/') }}" class="headerButton goBack text-primary">
-                <ion-icon name="chevron-back-outline"></ion-icon>
-            </a>
-        </div>
-        <div class="pageTitle" style="opacity: 100%;">
+        <div class="left ms-1">
             <form class="search-form" action="/product">
                 <div class="form-group searchbox">
                     <input type="text" class="form-control" id="myInput" name="search" placeholder="Cari...">
@@ -14,7 +9,7 @@
                 </div>
             </form>
         </div>
-        <div class="right ">
+        <div class="right me-2">
             <a href="{{ url('/account') }}" class="headerButton">
                 <ion-icon name="person-outline"></ion-icon>
             </a>
