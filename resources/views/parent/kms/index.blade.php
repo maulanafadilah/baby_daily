@@ -30,28 +30,37 @@
         <div class="section full">
             <div class="section-title mt-1 mb-1">Balita</div>
             <div class="wide-block pt-2 pb-3">
-                
-                @if (!empty($balita))
-				@foreach ($balita as $item)
-                    <div class="card mt-2">
-                        <div class="row align-items-center card-body d-flex" onclick="window.location.href='/kms/{{$item->id}}'">
-                            <div class="col-3 text-center">
-                                <img src="assets/img/sample/photo/1.jpg" class="imaged rounded w64" alt="product image">
-                            </div>
-                            <div class="col-7 align-self-center">
-                                <h3 class="mb-0 d-flex align-items-center justify-content-between">
-                                    {{$item->nama_lengkap}}
-                                </h3>
-                                <h5 class="card-subtitle pt-1" style="text-transform: none;">Usia: {{$item->usia}} Bulan</h5>
-                            </div>
-                            <div class="col-2 text-center">
-                                <ion-icon name="chevron-forward-outline" class="iconedbox d-flex align-items-center"></ion-icon>
-                            </div>
+                @if(!empty($balita))
+                    @foreach ($balita as $item)
+                        <div class="card mt-2">
+                            <div class="row align-items-center card-body d-flex" onclick="window.location.href='/kms/{{$item->id}}'">
+                                <div class="col-3 text-center">
+                                    <img src="assets/img/sample/photo/1.jpg" class="imaged rounded w64" alt="product image">
+                                </div>
+                                <div class="col-7 align-self-center">
+                                    <h3 class="mb-0 d-flex align-items-center justify-content-between">
+                                        {{$item->nama_lengkap}}
+                                    </h3>
+                                    <h5 class="card-subtitle pt-1" style="text-transform: none;">Usia: {{$item->usia}} Bulan</h5>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <ion-icon name="chevron-forward-outline" class="iconedbox d-flex align-items-center"></ion-icon>
+                                </div>
 
+                            </div>
+                        </div>
+                    @endforeach
+                @elseif($balita == false)
+                <div class="card text-center">
+                        <div class="card-body p-5">
+                            <h6 class="card-title">Anda belum menambahkan data Balita</h6>
+                            <p class="card-text">
+                                Anda dapat menambahkan data balita <a href="/balita/create">disini</a> atau klik icon + dipojok kiri atas layar anda
+                            </p>
                         </div>
                     </div>
-                @endforeach
 				@endif
+                
 
                 
             </div>

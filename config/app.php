@@ -178,6 +178,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class
     ],
 
     /*
@@ -194,6 +195,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class
     ])->toArray(),
 
 ];

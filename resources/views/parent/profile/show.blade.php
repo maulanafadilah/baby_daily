@@ -53,7 +53,7 @@
                         </div>
                     </a>                   
                 </li>
-                <li>
+                <!-- <li>
                     <a href="/profile/2/edit">
                         <div class="col text-secondary">
                             NIK
@@ -62,7 +62,7 @@
                             {{$biodata->nik}}
                         </div>
                     </a> 
-                </li>
+                </li> -->
                 <li>
                     <a href="/profile/3/edit">
                         <div class="col text-secondary">

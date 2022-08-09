@@ -11,7 +11,7 @@
 
                 <div class="alert alert-outline-info" role="alert">
                     <h4 class="alert-title"><span><ion-icon name="information-circle-outline"></ion-icon></span> Informasi</h4>
-                    Nomor NIK dan Nomor KK diperlukan untuk mencocokan data dengan No KK anak di Posyandu
+                    Nomor KK diperlukan untuk mencocokan data dengan Nomor KK anak di Posyandu Digital
                 </div>
                 <form class="needs-validation mt-2" method="post" action="{{ url('/profile/') }}">
                     @csrf
@@ -28,7 +28,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group boxed">
+                    <!-- <div class="form-group boxed">
                         <div class="input-wrapper">
                             <label class="label" for="name5">NIK</label>
                             <input type="text" class="form-control" id="name5" name="nik" placeholder="Masukan Nomor NIK" required>
@@ -38,7 +38,7 @@
                             <div class="valid-feedback">Looks good!</div>
                             <div class="invalid-feedback">Please enter your name.</div>
                         </div>
-                    </div>
+                    </div> -->
 
                     
 

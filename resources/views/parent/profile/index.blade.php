@@ -6,6 +6,22 @@
 @section('content')
 
 @include('parent.profile.elements.header-back')
+
+        @if(session()->has('failed'))
+            <div id="toast-12" class="toast-box toast-center show">
+                <div class="in">
+                    <div class="text text-danger">
+                    {{ session('failed') }}
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                setTimeout(() => {
+                closeToastBox('toast-12')
+                }, 2000);
+            </script>
+        @endif
         <div class="section mt-3">
             <div class="avatar" style="text-align:center">
                 <img src="assets/img/sample/avatar/avatar1.jpg" alt="avatar" class="imaged w64 rounded">
@@ -31,14 +47,14 @@
                             {{auth()->user()->nama_lengkap}}
                         </div>                  
                 </li>
-                <li>
+                <!-- <li>
                         <div class="col text-secondary">
                             NIK
                         </div>
                         <div class="col text-secondary">
                             Perlu Diisi untuk KMS
                         </div>
-                </li>
+                </li> -->
                 <li>
                         <div class="col text-secondary">
                             No KK

@@ -127,10 +127,11 @@ class ProfileController extends Controller
         // return $request;
         $validatedData = $request->validate([
             'no_kk' => 'required',
-            'nik' => 'required|unique:elterns',
         ]);
 
-        Eltern::create($validatedData + ['nomor_telepon' => auth()->user()->nomor_telepon, 'nama_lengkap'=> auth()->user()->nama_lengkap, 'id_pengguna'=>auth()->user()->id]);
+        $nik = rand();
+
+        Eltern::create($validatedData + ['nik'=>$nik, 'nomor_telepon' => auth()->user()->nomor_telepon, 'nama_lengkap'=> auth()->user()->nama_lengkap, 'id_pengguna'=>auth()->user()->id]);
 
         return redirect('/profile')->with('success', 'Berhasil Mengubah Data Diri!');
     }

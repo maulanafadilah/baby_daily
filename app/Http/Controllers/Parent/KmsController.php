@@ -38,13 +38,14 @@ class KmsController extends Controller
         $biodata = Eltern::where('id_pengguna', $id_pengguna)->get();
 
         if ($biodata == '[]') {
-            return view('parent/kms/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'products_all'));
+            return redirect('/profile')->with('failed', 'Tolong Tambahkan Nomor KK Terlebih Dahulu');
+            // return view('parent/kms/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'products_all'));
         } else{
-            // $curdate = Babie::select(DB::raw('CURDATE() as today'))->first();
             $biodata = Eltern::where('id_pengguna', $id_pengguna)->get()[0];
             $balita = Babie::select('id', 'nama_lengkap', DB::raw("PERIOD_DIFF(EXTRACT(YEAR_MONTH FROM CURDATE()), EXTRACT(YEAR_MONTH FROM tanggal_lahir)) as usia"))->where('no_kk', $biodata->no_kk)->get();
-
-            // return $balita;
+            if($balita == '[]'){
+                $balita = false;
+            }
             return view('parent/kms/index', compact('page_title', 'page_description', 'action', 'header', 'search', 'extraHeader', 'footer', 'bottom', 'sidebar', 'balita', 'biodata', 'products_all'));
         }
         // return $biodata;
@@ -100,7 +101,7 @@ class KmsController extends Controller
 
         $blt = DB::table('babies')->where('id', $id)->value('nik');
         $s = json_encode($blt);
-        $khrn = Presence::where('nik', $s)->get('berat');
+        $khrn = Presence::where('nik', $s)->orderBy('tanggal', 'asc')->get('berat');
 
             if ($khrn != '[]') {
                 foreach ($gd as $student) {
@@ -118,7 +119,7 @@ class KmsController extends Controller
                 $md2 = json_encode($dataPoints);
             
                 // return $md2;
-                $kehadiran = Presence::where('nik', $balita->nik)->get();
+                $kehadiran = Presence::where('nik', $balita->nik)->orderBy('tanggal', 'desc')->get();
             } else {
                 $md = 0;
                 $md2 = 0;
