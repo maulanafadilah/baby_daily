@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'uid' => [
+        'client_id' => env('UID_CLIENT_ID'),
+        'client_secret' => env('UID_CLIENT_SECRET'),
+        'redirect' => env('UID_REDIRECT_URI'),
+    ],
+
 ];
